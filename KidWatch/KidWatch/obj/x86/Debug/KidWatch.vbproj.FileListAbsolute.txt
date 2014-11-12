@@ -10,3 +10,6 @@ C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWat
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
+H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
+H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
+H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
