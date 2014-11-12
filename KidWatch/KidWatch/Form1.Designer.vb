@@ -46,11 +46,11 @@ Partial Class KidWatch
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label1.Font = New System.Drawing.Font("Comic Sans MS", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(12, 56)
+        Me.Label1.Location = New System.Drawing.Point(12, 55)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(128, 37)
+        Me.Label1.Size = New System.Drawing.Size(116, 37)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "KidWatch"
+        Me.Label1.Text = "Drag Me"
         '
         'KidWatch
         '
