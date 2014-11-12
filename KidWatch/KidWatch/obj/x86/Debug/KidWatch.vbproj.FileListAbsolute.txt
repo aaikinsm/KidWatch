@@ -1,0 +1,12 @@
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\bin\Debug\KidWatch.exe
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\bin\Debug\KidWatch.pdb
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\bin\Debug\KidWatch.xml
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.Form1.resources
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.Resources.resources
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.vbproj.GenerateResource.Cache
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.exe
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.xml
+C:\Users\aaikinsm\AppData\Local\Temporary Projects\KidWatch\obj\x86\Debug\KidWatch.pdb
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
