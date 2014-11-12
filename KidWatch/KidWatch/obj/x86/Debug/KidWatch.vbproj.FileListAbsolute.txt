@@ -13,3 +13,9 @@ H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
 H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
 H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
 H:\GitHub Projects\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
+H:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.exe
+H:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.pdb
+H:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.xml
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.KidWatch.resources
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.Resources.resources
+H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.vbproj.GenerateResource.Cache
