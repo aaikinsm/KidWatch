@@ -31,10 +31,12 @@ Partial Class KidWatch
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.MusicButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PlayButton = New System.Windows.Forms.Button()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.BackgroundWorkerMusic = New System.ComponentModel.BackgroundWorker()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         Me.Music.SuspendLayout()
@@ -87,6 +89,7 @@ Partial Class KidWatch
         '
         'Music
         '
+        Me.Music.Controls.Add(Me.PlayButton)
         Me.Music.Controls.Add(Me.PictureBox3)
         Me.Music.Location = New System.Drawing.Point(4, 22)
         Me.Music.Name = "Music"
@@ -147,6 +150,16 @@ Partial Class KidWatch
         Me.PictureBox1.Size = New System.Drawing.Size(151, 151)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        '
+        'PlayButton
+        '
+        Me.PlayButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.play_512
+        Me.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PlayButton.Location = New System.Drawing.Point(50, 50)
+        Me.PlayButton.Name = "PlayButton"
+        Me.PlayButton.Size = New System.Drawing.Size(50, 50)
+        Me.PlayButton.TabIndex = 1
+        Me.PlayButton.UseVisualStyleBackColor = True
         '
         'PictureBox3
         '
@@ -220,5 +233,7 @@ Partial Class KidWatch
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
     Friend WithEvents MusicButton As System.Windows.Forms.Button
+    Friend WithEvents PlayButton As System.Windows.Forms.Button
+    Friend WithEvents BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
 
 End Class

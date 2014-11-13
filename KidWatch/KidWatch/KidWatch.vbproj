@@ -101,9 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +122,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\music-2-xxl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fast-forward-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pause-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repeat-512 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repeat-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rewind-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle-512 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Legend_of_Zelda_A_Link_to_the_Past_Dark_World_Jazz_OC_ReMix.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zelda A Link To The Past Chest Fanfare.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
