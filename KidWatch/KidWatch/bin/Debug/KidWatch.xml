@@ -15,6 +15,10 @@ KidWatch
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
+</member><member name="P:KidWatch.My.Resources.Resources.activity_feed_512">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:KidWatch.My.Resources.Resources.blue">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -31,6 +35,10 @@ KidWatch
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:KidWatch.My.Resources.Resources.next_512">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:KidWatch.My.Resources.Resources.pause_512">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -39,11 +47,15 @@ KidWatch
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:KidWatch.My.Resources.Resources.previous_512">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:KidWatch.My.Resources.Resources.repeat_512">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member><member name="P:KidWatch.My.Resources.Resources.repeat_512_red">
+</member><member name="P:KidWatch.My.Resources.Resources.repeat_512_green">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -55,7 +67,7 @@ KidWatch
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
-</member><member name="P:KidWatch.My.Resources.Resources.shuffle_512_red">
+</member><member name="P:KidWatch.My.Resources.Resources.shuffle_512_green">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

@@ -63,6 +63,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property activity_feed_512() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("activity_feed_512", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property blue() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("blue", resourceCulture)
@@ -102,6 +112,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property next_512() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("next_512", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property pause_512() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("pause_512", resourceCulture)
@@ -122,6 +142,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property previous_512() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("previous_512", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property repeat_512() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("repeat_512", resourceCulture)
@@ -132,9 +162,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property repeat_512_red() As System.Drawing.Bitmap
+        Friend ReadOnly Property repeat_512_green() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("repeat_512_red", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("repeat_512_green", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -162,9 +192,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property shuffle_512_red() As System.Drawing.Bitmap
+        Friend ReadOnly Property shuffle_512_green() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("shuffle_512_red", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("shuffle_512_green", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

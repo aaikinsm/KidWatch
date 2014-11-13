@@ -139,19 +139,28 @@
   <data name="repeat_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\repeat-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="repeat_512_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\repeat-512 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="rewind_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rewind-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shuffle_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shuffle-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="shuffle_512_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shuffle-512 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Zelda_A_Link_To_The_Past_Chest_Fanfare" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zelda A Link To The Past Chest Fanfare.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="activity_feed_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\activity-feed-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="previous_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\previous-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="repeat_512_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\repeat-512-green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shuffle_512_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shuffle-512-green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

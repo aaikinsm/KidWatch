@@ -19,13 +19,12 @@ H:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.xml
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.KidWatch.resources
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.Resources.resources
 H:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.vbproj.GenerateResource.Cache
-C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
-C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
-C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb
 C:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.exe
 C:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.pdb
 C:\GitHub\KidWatch\KidWatch\KidWatch\bin\Debug\KidWatch.xml
 C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.KidWatch.resources
 C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.Resources.resources
 C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.vbproj.GenerateResource.Cache
-C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.vbprojResolveAssemblyReference.cache
+C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.exe
+C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.xml
+C:\GitHub\KidWatch\KidWatch\KidWatch\obj\x86\Debug\KidWatch.pdb

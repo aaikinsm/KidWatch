@@ -133,16 +133,10 @@
     <None Include="Resources\play-512.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\repeat-512 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\repeat-512.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rewind-512.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shuffle-512 %281%29.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shuffle-512.png" />
@@ -152,6 +146,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Zelda A Link To The Past Chest Fanfare.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repeat-512-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle-512-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\activity-feed-512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
