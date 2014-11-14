@@ -1,4 +1,39 @@
 ﻿Public Class KidWatch
+
+    '   _._ 
+    '  /,,,\ 
+    ' ()a,a() 
+    ' (\_=_/) 
+    ' (,._,.) 
+    ' /( : )\ 
+    '(( ) ( )) 
+    ' \/"""\/       NOW THAT I HAVE YOUR ATTENTION!!
+    ' '\ | /` 
+    '  | | |        Here is the list of features we need to impliment, 
+    '  \_|_/ 
+    ' _/| |\_       Remove the parts you are currently working / already completed features 
+    '                    from this list to avoid repetition
+    '
+    'General features
+    '    Screen layouts include access to future features: playlists management, 
+    '    configuration (1 each) 
+    'Children Watch
+    '    • View time(2) , date(1), choose watch face(2)
+    '    • Be reminded of appointments (2), hide reminder (1)
+    '    • View day(1), week(1) schedules and specific appointment (2)
+    '    • Call parent (1), hang up(1), call alternate parent (2) other people (2)
+    '    • Leave message (1), automatic redial (2)
+    '    • receive call (2) and answer(1) or not(1)
+    '    • Send voice(1), video(2) or picture (2) message
+    '    • Receive message(1) and listen to/view it (2)
+    '    • Review messages (1) and keep(1) or discard them (1)
+    '    • Music: play song(1), pause(1), next/previous song(2), repeat/shuffle(1)
+    '    • Make watch non-disruptive/normal(1), non-disruptive options(1)
+    'Parent's U.I.
+    '    • Track child: see child(ren) on map (2)
+    '    • Call one (1) or more (2) children from map
+
+
     Const watchHeight As Integer = 190
     Const watchwidth As Integer = 167
     Private YOfsetCalendar As Integer = 0, YOfsetMusic As Integer = 0, YOfsetCall As Integer = 0
@@ -20,15 +55,13 @@
 
     Private Property BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
 
-
+    'Main menu scroll
     Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown
         clicked = True
         YOfsetCalendar = Cursor.Position.Y - CalendarButton.Location.Y
         YOfsetMusic = Cursor.Position.Y - MusicButton.Location.Y
         YOfsetCall = Cursor.Position.Y - callButton.Location.Y
     End Sub
-
-
     Private Sub Menu_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseMove, MusicButton.MouseMove, callButton.MouseMove
         If (clicked) Then
             CalendarButton.Location = New Drawing.Point(CalendarButton.Location.X, (Cursor.Position.Y - YOfsetCalendar))
@@ -36,7 +69,6 @@
             callButton.Location = New Drawing.Point(callButton.Location.X, (Cursor.Position.Y - YOfsetCall))
         End If
     End Sub
-
     Private Sub Menu_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseUp, MusicButton.MouseUp, callButton.MouseUp
         clicked = False
     End Sub

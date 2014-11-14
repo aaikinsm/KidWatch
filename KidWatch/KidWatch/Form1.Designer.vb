@@ -246,6 +246,7 @@ Partial Class KidWatch
         'time
         '
         Me.time.AutoSize = True
+        Me.time.BackColor = System.Drawing.Color.White
         Me.time.Font = New System.Drawing.Font("Consolas", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.time.Location = New System.Drawing.Point(20, 45)
         Me.time.Name = "time"
@@ -369,6 +370,7 @@ Partial Class KidWatch
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(23, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(86, 13)
