@@ -9,9 +9,9 @@
     '(( ) ( )) 
     ' \/"""\/       NOW THAT I HAVE YOUR ATTENTION!!
     ' '\ | /` 
-    '  | | |        Here is the list of features we need to impliment, 
+    '  | | |        Here is the list of features we need to implement, 
     '  \_|_/ 
-    ' _/| |\_       Remove the parts you are currently working / already completed features 
+    ' _/| |\_       Remove the parts you are currently working on / already completed features 
     '                    from this list to avoid repetition
     '
     'General features
@@ -79,6 +79,7 @@
         MainTabControl.SizeMode = TabSizeMode.Fixed
         MainTabControl.SelectedTab = Clock
         ClockTimer.Start()
+        ParentUI.Show()
         Me.Size = New Size(watchwidth, watchHeight)
 
 
