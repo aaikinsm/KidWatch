@@ -42,6 +42,10 @@
         MainTabControl.SelectedTab = Music
     End Sub
 
+    Private Sub CalendarButton_Click(sender As Object, e As EventArgs) Handles CalendarButton.Click
+        MainTabControl.SelectedTab = Calendar
+    End Sub
+
     'Worker thread plays song.
     Private Sub BackgroundWorkerMusic_DoWork(ByVal sender As Object, _
                                          ByVal e As System.ComponentModel.DoWorkEventArgs) _
@@ -100,4 +104,5 @@
         End If
         shuffle = Not shuffle
     End Sub
+
 End Class
