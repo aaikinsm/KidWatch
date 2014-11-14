@@ -38,6 +38,7 @@
     Const watchwidth As Integer = 167
     Private YOfsetCalendar As Integer = 0, YOfsetMusic As Integer = 0, YOfsetCall As Integer = 0
     Private clicked As Boolean = False
+    Private locked As Boolean = True
 
     'Variables for music
     Dim playing As Boolean = False
@@ -48,12 +49,10 @@
     Dim songLength() As Double = {1.5, 224.5}
     Dim songName() As String = {"Chest", "Dark World Jazz"}
     Dim songNumber As Integer = 0
-    Dim currentSongLength
+    Dim currentSongLength As Double
 
     'Variables for calendar
     Dim eventsDict As New Dictionary(Of DateTime, String)
-
-    Private Property BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
 
     'Main menu scroll
     Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown
@@ -81,7 +80,7 @@
         ClockTimer.Start()
         ParentUI.Show()
         Me.Size = New Size(watchwidth, watchHeight)
-
+        Me.MaximumSize = New Size(watchwidth, watchHeight)
 
     End Sub
     'Sample tab switching
@@ -104,31 +103,7 @@
             time.Text = Format(My.Computer.Clock.LocalTime.Hour) + " " + Format(My.Computer.Clock.LocalTime.Minute)
         End If
     End Sub
-    'Worker thread plays song.
-    'Private Sub BackgroundWorkerMusic_DoWork(ByVal sender As Object, _
-    'ByVal e As System.ComponentModel.DoWorkEventArgs) _
-    'Handles BackgroundWorkerMusic.DoWork
-    'My.Computer.Audio.Play(My.Resources.ResourceManager.GetObject(songs(songNumber)), _
-    'AudioPlayMode.WaitToComplete)
-    'End Sub
-    'Monitors the state of Music worker to change icon and iamge
-    'Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As Object, _
-    ' ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) _
-    '     Handles BackgroundWorkerMusic.RunWorkerCompleted
-    '  If repeat Then
-    '      Me.BackgroundWorkerMusic.RunWorkerAsync()
-    '  ElseIf shuffle Then
-    '
-    '   ElseIf songNumber = MAXSONGS - 1 Then
-    '     playing = False
-    '       PlayButton.BackgroundImage = My.Resources.play_512
-    '   Else
 
-    '   End If
-    ' songNumber += 1
-    ' Me.BackgroundWorkerMusic.RunWorkerAsync()
-
-    'End Sub
     Private Sub MusicTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MusicTimer.Tick
         currentSongLength -= MusicTimer.Interval / 1000
         If currentSongLength <= 0 Then
@@ -178,9 +153,9 @@
     ' Toggle Repeat
     Private Sub RepeatButton_Click(sender As Object, e As EventArgs) Handles RepeatButton.Click
         If repeat Then
-            RepeatButton.BackgroundImage = My.Resources.repeat_512
-        Else
             RepeatButton.BackgroundImage = My.Resources.repeat_512_green
+        Else
+            RepeatButton.BackgroundImage = My.Resources.repeat_512
         End If
         repeat = Not repeat
     End Sub
@@ -188,9 +163,9 @@
     'Toggle Shuffle
     Private Sub SufftleButton_Click(sender As Object, e As EventArgs) Handles ShufftleButton.Click
         If shuffle Then
-            ShufftleButton.BackgroundImage = My.Resources.repeat_512
+            ShufftleButton.BackgroundImage = My.Resources.shuffle_512_green
         Else
-            ShufftleButton.BackgroundImage = My.Resources.repeat_512_green
+            ShufftleButton.BackgroundImage = My.Resources.shuffle_512
         End If
         shuffle = Not shuffle
     End Sub
@@ -237,5 +212,9 @@
         Else
             eventLabel.Text = "event name missing"
         End If
+    End Sub
+
+    Private Sub PlaylistButton_Click(sender As Object, e As EventArgs) Handles PlaylistButton.Click
+        MainTabControl.SelectedTab = Playlist
     End Sub
 End Class

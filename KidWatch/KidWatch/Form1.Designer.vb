@@ -39,6 +39,7 @@ Partial Class KidWatch
         Me.PlayButton = New System.Windows.Forms.Button()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Clock = New System.Windows.Forms.TabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.time = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Calendar = New System.Windows.Forms.TabPage()
@@ -51,9 +52,9 @@ Partial Class KidWatch
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Playlist = New System.Windows.Forms.TabPage()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,6 +75,7 @@ Partial Class KidWatch
         Me.MainTabControl.Controls.Add(Me.Clock)
         Me.MainTabControl.Controls.Add(Me.Calendar)
         Me.MainTabControl.Controls.Add(Me.Disrupt)
+        Me.MainTabControl.Controls.Add(Me.Playlist)
         Me.MainTabControl.Location = New System.Drawing.Point(0, 1)
         Me.MainTabControl.Name = "MainTabControl"
         Me.MainTabControl.SelectedIndex = 0
@@ -243,6 +245,16 @@ Partial Class KidWatch
         Me.Clock.Text = "Clock"
         Me.Clock.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(23, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(86, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Monday Nov. 16"
+        '
         'time
         '
         Me.time.AutoSize = True
@@ -361,21 +373,21 @@ Partial Class KidWatch
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
+        'Playlist
+        '
+        Me.Playlist.Location = New System.Drawing.Point(4, 22)
+        Me.Playlist.Name = "Playlist"
+        Me.Playlist.Padding = New System.Windows.Forms.Padding(3)
+        Me.Playlist.Size = New System.Drawing.Size(153, 154)
+        Me.Playlist.TabIndex = 5
+        Me.Playlist.Text = "Playlist"
+        Me.Playlist.UseVisualStyleBackColor = True
+        '
         'MusicTimer
         '
         '
         'ClockTimer
         '
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(23, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(86, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Monday Nov. 16"
         '
         'KidWatch
         '
@@ -434,5 +446,6 @@ Partial Class KidWatch
     Friend WithEvents time As System.Windows.Forms.Label
     Friend WithEvents ClockTimer As System.Windows.Forms.Timer
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Playlist As System.Windows.Forms.TabPage
 
 End Class
