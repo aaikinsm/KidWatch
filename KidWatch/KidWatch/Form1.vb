@@ -15,6 +15,8 @@
     Dim songNumber As Integer = 0
     Dim currentSongLength
 
+    Private Property BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
+
 
     Private Sub Label1_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Label1.MouseDown
         clicked = True
@@ -50,27 +52,30 @@
     End Sub
 
     'Worker thread plays song.
-    Private Sub BackgroundWorkerMusic_DoWork(ByVal sender As Object, _
-                                         ByVal e As System.ComponentModel.DoWorkEventArgs) _
-                                     Handles BackgroundWorkerMusic.DoWork
-        My.Computer.Audio.Play(My.Resources.ResourceManager.GetObject(songs(songNumber)), _
-                               AudioPlayMode.WaitToComplete)
-    End Sub
+    'Private Sub BackgroundWorkerMusic_DoWork(ByVal sender As Object, _
+    'ByVal e As System.ComponentModel.DoWorkEventArgs) _
+    'Handles BackgroundWorkerMusic.DoWork
+    'My.Computer.Audio.Play(My.Resources.ResourceManager.GetObject(songs(songNumber)), _
+    'AudioPlayMode.WaitToComplete)
+    'End Sub
     'Monitors the state of Music worker to change icon and iamge
-    Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As Object, _
-                                                 ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) _
-                                             Handles BackgroundWorkerMusic.RunWorkerCompleted
-        If repeat Then
-            Me.BackgroundWorkerMusic.RunWorkerAsync()
-        ElseIf shuffle Then
+    'Private Sub BackgroundWorker1_RunWorkerCompleted(ByVal sender As Object, _
+    ' ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) _
+    '     Handles BackgroundWorkerMusic.RunWorkerCompleted
+    '  If repeat Then
+    '      Me.BackgroundWorkerMusic.RunWorkerAsync()
+    '  ElseIf shuffle Then
+    '
+    '   ElseIf songNumber = MAXSONGS - 1 Then
+    '     playing = False
+    '       PlayButton.BackgroundImage = My.Resources.play_512
+    '   Else
 
-        ElseIf songNumber = MAXSONGS - 1 Then
-            playing = False
-            PlayButton.BackgroundImage = My.Resources.play_512
-        Else
-            songNumber += 1
-            Me.BackgroundWorkerMusic.RunWorkerAsync()
+    '   End If
+    ' songNumber += 1
+    ' Me.BackgroundWorkerMusic.RunWorkerAsync()
 
+    'End Sub
     Private Sub MusicTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MusicTimer.Tick
         currentSongLength -= MusicTimer.Interval / 1000
         If currentSongLength <= 0 Then
