@@ -47,6 +47,10 @@ Partial Class KidWatch
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.eventName = New System.Windows.Forms.Label()
+        Me.eventLabel = New System.Windows.Forms.Label()
+        Me.eventNameBox = New System.Windows.Forms.TextBox()
+        Me.createEventButton = New System.Windows.Forms.Button()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,7 +105,6 @@ Partial Class KidWatch
         '
         Me.MusicButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.music_icon
         Me.MusicButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MusicButton.Location = New System.Drawing.Point(95, 83)
         Me.MusicButton.Location = New System.Drawing.Point(54, 83)
         Me.MusicButton.Name = "MusicButton"
         Me.MusicButton.Size = New System.Drawing.Size(50, 50)
@@ -199,7 +202,6 @@ Partial Class KidWatch
         'NowPlaying
         '
         Me.NowPlaying.AutoSize = True
-        Me.NowPlaying.Location = New System.Drawing.Point(17, 17)
         Me.NowPlaying.Location = New System.Drawing.Point(3, 17)
         Me.NowPlaying.Name = "NowPlaying"
         Me.NowPlaying.Size = New System.Drawing.Size(44, 13)
@@ -248,6 +250,10 @@ Partial Class KidWatch
         '
         'Calendar
         '
+        Me.Calendar.Controls.Add(Me.createEventButton)
+        Me.Calendar.Controls.Add(Me.eventNameBox)
+        Me.Calendar.Controls.Add(Me.eventLabel)
+        Me.Calendar.Controls.Add(Me.eventName)
         Me.Calendar.Controls.Add(Me.calendarLabel)
         Me.Calendar.Controls.Add(Me.CalendarPicker)
         Me.Calendar.Controls.Add(Me.PictureBox5)
@@ -271,7 +277,7 @@ Partial Class KidWatch
         '
         'CalendarPicker
         '
-        Me.CalendarPicker.Location = New System.Drawing.Point(8, 19)
+        Me.CalendarPicker.Location = New System.Drawing.Point(6, 19)
         Me.CalendarPicker.Name = "CalendarPicker"
         Me.CalendarPicker.Size = New System.Drawing.Size(138, 20)
         Me.CalendarPicker.TabIndex = 1
@@ -305,9 +311,40 @@ Partial Class KidWatch
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
-        'BackgroundWorkerMusic
         'MusicTimer
         '
+        '
+        'eventName
+        '
+        Me.eventName.AutoSize = True
+        Me.eventName.Location = New System.Drawing.Point(9, 46)
+        Me.eventName.Name = "eventName"
+        Me.eventName.Size = New System.Drawing.Size(0, 13)
+        Me.eventName.TabIndex = 3
+        '
+        'eventLabel
+        '
+        Me.eventLabel.Location = New System.Drawing.Point(3, 42)
+        Me.eventLabel.Name = "eventLabel"
+        Me.eventLabel.Size = New System.Drawing.Size(141, 48)
+        Me.eventLabel.TabIndex = 4
+        Me.eventLabel.Text = "please enter the name of the event"
+        '
+        'eventNameBox
+        '
+        Me.eventNameBox.Location = New System.Drawing.Point(6, 93)
+        Me.eventNameBox.Name = "eventNameBox"
+        Me.eventNameBox.Size = New System.Drawing.Size(135, 20)
+        Me.eventNameBox.TabIndex = 5
+        '
+        'createEventButton
+        '
+        Me.createEventButton.Location = New System.Drawing.Point(35, 119)
+        Me.createEventButton.Name = "createEventButton"
+        Me.createEventButton.Size = New System.Drawing.Size(75, 23)
+        Me.createEventButton.TabIndex = 6
+        Me.createEventButton.Text = "Create"
+        Me.createEventButton.UseVisualStyleBackColor = True
         '
         'KidWatch
         '
@@ -358,5 +395,9 @@ Partial Class KidWatch
     Friend WithEvents CalendarPicker As System.Windows.Forms.DateTimePicker
     Friend WithEvents calendarLabel As System.Windows.Forms.Label
     Friend WithEvents MusicTimer As System.Windows.Forms.Timer
+    Friend WithEvents eventName As System.Windows.Forms.Label
+    Friend WithEvents eventLabel As System.Windows.Forms.Label
+    Friend WithEvents eventNameBox As System.Windows.Forms.TextBox
+    Friend WithEvents createEventButton As System.Windows.Forms.Button
 
 End Class

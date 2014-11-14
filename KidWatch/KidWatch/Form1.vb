@@ -15,6 +15,9 @@
     Dim songNumber As Integer = 0
     Dim currentSongLength
 
+    'Variables for calendar
+    Dim eventsDict As New Dictionary(Of DateTime, String)
+
     Private Property BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
 
 
@@ -155,6 +158,34 @@
         If songNumber - 1 >= 0 Then
             songNumber -= 1
             PlayMusic()
+        End If
+    End Sub
+
+    Private Sub CalendarPicker_ValueChanged(sender As Object, e As EventArgs) Handles CalendarPicker.ValueChanged
+        If eventsDict.ContainsKey(CalendarPicker.Value.ToString()) Then
+            ' populate event data with details
+            eventLabel.Text = eventsDict.Item(sender.value.ToString())
+            eventNameBox.Visible = False
+            createEventButton.Visible = False
+        Else
+            ' make event creation visible
+            eventLabel.Text = "please enter the name of the event"
+            eventNameBox.Visible = True
+            createEventButton.Visible = True
+        End If
+    End Sub
+
+    Private Sub createEventButton_Click(sender As Object, e As EventArgs) Handles createEventButton.Click
+        If eventNameBox.Text.Length > 0 Then
+            eventsDict.Add(CalendarPicker.Value.ToString(), eventNameBox.Text)
+
+            eventLabel.Text = "created event"
+            eventNameBox.Visible = False
+            createEventButton.Visible = False
+
+            eventNameBox.Text = ""
+        Else
+            eventLabel.Text = "event name missing"
         End If
     End Sub
 End Class
