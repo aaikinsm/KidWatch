@@ -25,9 +25,9 @@ Partial Class KidWatch
         Me.components = New System.ComponentModel.Container()
         Me.MainTabControl = New System.Windows.Forms.TabControl()
         Me.Main = New System.Windows.Forms.TabPage()
+        Me.callButton = New System.Windows.Forms.Button()
         Me.CalendarButton = New System.Windows.Forms.Button()
         Me.MusicButton = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Music = New System.Windows.Forms.TabPage()
         Me.RepeatButton = New System.Windows.Forms.Button()
@@ -39,18 +39,21 @@ Partial Class KidWatch
         Me.PlayButton = New System.Windows.Forms.Button()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Clock = New System.Windows.Forms.TabPage()
+        Me.time = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Calendar = New System.Windows.Forms.TabPage()
+        Me.createEventButton = New System.Windows.Forms.Button()
+        Me.eventNameBox = New System.Windows.Forms.TextBox()
+        Me.eventLabel = New System.Windows.Forms.Label()
+        Me.eventName = New System.Windows.Forms.Label()
         Me.calendarLabel = New System.Windows.Forms.Label()
         Me.CalendarPicker = New System.Windows.Forms.DateTimePicker()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.eventName = New System.Windows.Forms.Label()
-        Me.eventLabel = New System.Windows.Forms.Label()
-        Me.eventNameBox = New System.Windows.Forms.TextBox()
-        Me.createEventButton = New System.Windows.Forms.Button()
+        Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,28 +77,38 @@ Partial Class KidWatch
         Me.MainTabControl.Location = New System.Drawing.Point(0, 1)
         Me.MainTabControl.Name = "MainTabControl"
         Me.MainTabControl.SelectedIndex = 0
-        Me.MainTabControl.Size = New System.Drawing.Size(159, 177)
+        Me.MainTabControl.Size = New System.Drawing.Size(161, 180)
         Me.MainTabControl.TabIndex = 2
         '
         'Main
         '
+        Me.Main.Controls.Add(Me.callButton)
         Me.Main.Controls.Add(Me.CalendarButton)
         Me.Main.Controls.Add(Me.MusicButton)
-        Me.Main.Controls.Add(Me.Label1)
         Me.Main.Controls.Add(Me.PictureBox1)
         Me.Main.Location = New System.Drawing.Point(4, 22)
         Me.Main.Name = "Main"
         Me.Main.Padding = New System.Windows.Forms.Padding(3)
-        Me.Main.Size = New System.Drawing.Size(151, 151)
+        Me.Main.Size = New System.Drawing.Size(153, 154)
         Me.Main.TabIndex = 0
         Me.Main.Text = "Main"
         Me.Main.UseVisualStyleBackColor = True
+        '
+        'callButton
+        '
+        Me.callButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
+        Me.callButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.callButton.Location = New System.Drawing.Point(54, 116)
+        Me.callButton.Name = "callButton"
+        Me.callButton.Size = New System.Drawing.Size(50, 50)
+        Me.callButton.TabIndex = 4
+        Me.callButton.UseVisualStyleBackColor = True
         '
         'CalendarButton
         '
         Me.CalendarButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.calendar_icon
         Me.CalendarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.CalendarButton.Location = New System.Drawing.Point(6, 83)
+        Me.CalendarButton.Location = New System.Drawing.Point(54, -22)
         Me.CalendarButton.Name = "CalendarButton"
         Me.CalendarButton.Size = New System.Drawing.Size(50, 50)
         Me.CalendarButton.TabIndex = 3
@@ -105,22 +118,11 @@ Partial Class KidWatch
         '
         Me.MusicButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.music_icon
         Me.MusicButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MusicButton.Location = New System.Drawing.Point(54, 83)
+        Me.MusicButton.Location = New System.Drawing.Point(54, 47)
         Me.MusicButton.Name = "MusicButton"
         Me.MusicButton.Size = New System.Drawing.Size(50, 50)
         Me.MusicButton.TabIndex = 2
         Me.MusicButton.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Comic Sans MS", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(27, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(90, 35)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Label1"
         '
         'PictureBox1
         '
@@ -144,7 +146,7 @@ Partial Class KidWatch
         Me.Music.Location = New System.Drawing.Point(4, 22)
         Me.Music.Name = "Music"
         Me.Music.Padding = New System.Windows.Forms.Padding(3)
-        Me.Music.Size = New System.Drawing.Size(151, 151)
+        Me.Music.Size = New System.Drawing.Size(153, 154)
         Me.Music.TabIndex = 1
         Me.Music.Text = "Music"
         Me.Music.UseVisualStyleBackColor = True
@@ -230,21 +232,36 @@ Partial Class KidWatch
         '
         'Clock
         '
+        Me.Clock.Controls.Add(Me.Label1)
+        Me.Clock.Controls.Add(Me.time)
         Me.Clock.Controls.Add(Me.PictureBox4)
         Me.Clock.Location = New System.Drawing.Point(4, 22)
         Me.Clock.Name = "Clock"
         Me.Clock.Padding = New System.Windows.Forms.Padding(3)
-        Me.Clock.Size = New System.Drawing.Size(151, 151)
+        Me.Clock.Size = New System.Drawing.Size(153, 154)
         Me.Clock.TabIndex = 2
         Me.Clock.Text = "Clock"
         Me.Clock.UseVisualStyleBackColor = True
         '
+        'time
+        '
+        Me.time.AutoSize = True
+        Me.time.Font = New System.Drawing.Font("Consolas", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.time.Location = New System.Drawing.Point(20, 45)
+        Me.time.Name = "time"
+        Me.time.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
+        Me.time.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.time.Size = New System.Drawing.Size(79, 54)
+        Me.time.TabIndex = 1
+        Me.time.Text = "7:45"
+        Me.time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'PictureBox4
         '
         Me.PictureBox4.Image = Global.KidWatch.My.Resources.Resources.blue
-        Me.PictureBox4.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox4.Location = New System.Drawing.Point(-4, 0)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(151, 151)
+        Me.PictureBox4.Size = New System.Drawing.Size(154, 155)
         Me.PictureBox4.TabIndex = 0
         Me.PictureBox4.TabStop = False
         '
@@ -260,10 +277,42 @@ Partial Class KidWatch
         Me.Calendar.Location = New System.Drawing.Point(4, 22)
         Me.Calendar.Name = "Calendar"
         Me.Calendar.Padding = New System.Windows.Forms.Padding(3)
-        Me.Calendar.Size = New System.Drawing.Size(151, 151)
+        Me.Calendar.Size = New System.Drawing.Size(153, 154)
         Me.Calendar.TabIndex = 3
         Me.Calendar.Text = "Calendar"
         Me.Calendar.UseVisualStyleBackColor = True
+        '
+        'createEventButton
+        '
+        Me.createEventButton.Location = New System.Drawing.Point(35, 119)
+        Me.createEventButton.Name = "createEventButton"
+        Me.createEventButton.Size = New System.Drawing.Size(75, 23)
+        Me.createEventButton.TabIndex = 6
+        Me.createEventButton.Text = "Create"
+        Me.createEventButton.UseVisualStyleBackColor = True
+        '
+        'eventNameBox
+        '
+        Me.eventNameBox.Location = New System.Drawing.Point(6, 93)
+        Me.eventNameBox.Name = "eventNameBox"
+        Me.eventNameBox.Size = New System.Drawing.Size(135, 20)
+        Me.eventNameBox.TabIndex = 5
+        '
+        'eventLabel
+        '
+        Me.eventLabel.Location = New System.Drawing.Point(3, 42)
+        Me.eventLabel.Name = "eventLabel"
+        Me.eventLabel.Size = New System.Drawing.Size(141, 48)
+        Me.eventLabel.TabIndex = 4
+        Me.eventLabel.Text = "please enter the name of the event"
+        '
+        'eventName
+        '
+        Me.eventName.AutoSize = True
+        Me.eventName.Location = New System.Drawing.Point(9, 46)
+        Me.eventName.Name = "eventName"
+        Me.eventName.Size = New System.Drawing.Size(0, 13)
+        Me.eventName.TabIndex = 3
         '
         'calendarLabel
         '
@@ -297,7 +346,7 @@ Partial Class KidWatch
         Me.Disrupt.Location = New System.Drawing.Point(4, 22)
         Me.Disrupt.Name = "Disrupt"
         Me.Disrupt.Padding = New System.Windows.Forms.Padding(3)
-        Me.Disrupt.Size = New System.Drawing.Size(151, 151)
+        Me.Disrupt.Size = New System.Drawing.Size(153, 154)
         Me.Disrupt.TabIndex = 4
         Me.Disrupt.Text = "Disrupt"
         Me.Disrupt.UseVisualStyleBackColor = True
@@ -314,54 +363,35 @@ Partial Class KidWatch
         'MusicTimer
         '
         '
-        'eventName
+        'ClockTimer
         '
-        Me.eventName.AutoSize = True
-        Me.eventName.Location = New System.Drawing.Point(9, 46)
-        Me.eventName.Name = "eventName"
-        Me.eventName.Size = New System.Drawing.Size(0, 13)
-        Me.eventName.TabIndex = 3
         '
-        'eventLabel
+        'Label1
         '
-        Me.eventLabel.Location = New System.Drawing.Point(3, 42)
-        Me.eventLabel.Name = "eventLabel"
-        Me.eventLabel.Size = New System.Drawing.Size(141, 48)
-        Me.eventLabel.TabIndex = 4
-        Me.eventLabel.Text = "please enter the name of the event"
-        '
-        'eventNameBox
-        '
-        Me.eventNameBox.Location = New System.Drawing.Point(6, 93)
-        Me.eventNameBox.Name = "eventNameBox"
-        Me.eventNameBox.Size = New System.Drawing.Size(135, 20)
-        Me.eventNameBox.TabIndex = 5
-        '
-        'createEventButton
-        '
-        Me.createEventButton.Location = New System.Drawing.Point(35, 119)
-        Me.createEventButton.Name = "createEventButton"
-        Me.createEventButton.Size = New System.Drawing.Size(75, 23)
-        Me.createEventButton.TabIndex = 6
-        Me.createEventButton.Text = "Create"
-        Me.createEventButton.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(23, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(86, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Monday Nov. 16"
         '
         'KidWatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(160, 177)
+        Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.ClientSize = New System.Drawing.Size(153, 178)
         Me.Controls.Add(Me.MainTabControl)
         Me.Name = "KidWatch"
         Me.Text = "KidWatch"
         Me.MainTabControl.ResumeLayout(False)
         Me.Main.ResumeLayout(False)
-        Me.Main.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Music.ResumeLayout(False)
         Me.Music.PerformLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Clock.ResumeLayout(False)
+        Me.Clock.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Calendar.ResumeLayout(False)
         Me.Calendar.PerformLayout()
@@ -379,7 +409,6 @@ Partial Class KidWatch
     Friend WithEvents Disrupt As System.Windows.Forms.TabPage
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
@@ -399,5 +428,9 @@ Partial Class KidWatch
     Friend WithEvents eventLabel As System.Windows.Forms.Label
     Friend WithEvents eventNameBox As System.Windows.Forms.TextBox
     Friend WithEvents createEventButton As System.Windows.Forms.Button
+    Friend WithEvents callButton As System.Windows.Forms.Button
+    Friend WithEvents time As System.Windows.Forms.Label
+    Friend WithEvents ClockTimer As System.Windows.Forms.Timer
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class

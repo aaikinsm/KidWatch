@@ -1,7 +1,7 @@
 ﻿Public Class KidWatch
     Const watchHeight As Integer = 190
     Const watchwidth As Integer = 167
-    Private YOfset As Integer = 0
+    Private YOfsetCalendar As Integer = 0, YOfsetMusic As Integer = 0, YOfsetCall As Integer = 0
     Private clicked As Boolean = False
 
     'Variables for music
@@ -21,19 +21,23 @@
     Private Property BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
 
 
-    Private Sub Label1_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Label1.MouseDown
+    Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown
         clicked = True
-        YOfset = Cursor.Position.Y - Label1.Location.Y
+        YOfsetCalendar = Cursor.Position.Y - CalendarButton.Location.Y
+        YOfsetMusic = Cursor.Position.Y - MusicButton.Location.Y
+        YOfsetCall = Cursor.Position.Y - callButton.Location.Y
     End Sub
 
 
-    Private Sub Label1_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Label1.MouseMove
+    Private Sub Menu_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseMove, MusicButton.MouseMove, callButton.MouseMove
         If (clicked) Then
-            Label1.Location = New Drawing.Point(Label1.Location.X, Cursor.Position.Y - YOfset)
+            CalendarButton.Location = New Drawing.Point(CalendarButton.Location.X, (Cursor.Position.Y - YOfsetCalendar))
+            MusicButton.Location = New Drawing.Point(MusicButton.Location.X, (Cursor.Position.Y - YOfsetMusic))
+            callButton.Location = New Drawing.Point(callButton.Location.X, (Cursor.Position.Y - YOfsetCall))
         End If
     End Sub
 
-    Private Sub Label1_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Label1.MouseUp
+    Private Sub Menu_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseUp, MusicButton.MouseUp, callButton.MouseUp
         clicked = False
     End Sub
 
@@ -41,6 +45,8 @@
         MainTabControl.Appearance = TabAppearance.FlatButtons
         MainTabControl.ItemSize = New Size(0, 1)
         MainTabControl.SizeMode = TabSizeMode.Fixed
+        MainTabControl.SelectedTab = Clock
+        ClockTimer.Start()
         Me.Size = New Size(watchwidth, watchHeight)
 
 
@@ -54,6 +60,17 @@
         MainTabControl.SelectedTab = Calendar
     End Sub
 
+    Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles time.MouseEnter
+        MainTabControl.SelectedTab = Main
+    End Sub
+
+    Private Sub ClockTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClockTimer.Tick
+        If (My.Computer.Clock.LocalTime.Second Mod 2 = 0) Then
+            time.Text = Format(My.Computer.Clock.LocalTime.Hour) + ":" + Format(My.Computer.Clock.LocalTime.Minute)
+        Else
+            time.Text = Format(My.Computer.Clock.LocalTime.Hour) + " " + Format(My.Computer.Clock.LocalTime.Minute)
+        End If
+    End Sub
     'Worker thread plays song.
     'Private Sub BackgroundWorkerMusic_DoWork(ByVal sender As Object, _
     'ByVal e As System.ComponentModel.DoWorkEventArgs) _
