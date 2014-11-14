@@ -10,7 +10,10 @@
     Dim repeat As Boolean = False
     Const MAXSONGS As Integer = 2
     Dim songs() As String = {"Zelda_A_Link_To_The_Past_Chest_Fanfare", "Legend_of_Zelda_A_Link_to_the_Past_Dark_World_Jazz_OC_ReMix"}
+    Dim songLength() As Double = {1.5, 224.5}
+    Dim songName() As String = {"Chest", "Dark World Jazz"}
     Dim songNumber As Integer = 0
+    Dim currentSongLength
 
 
     Private Sub Label1_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles Label1.MouseDown
@@ -67,22 +70,51 @@
         Else
             songNumber += 1
             Me.BackgroundWorkerMusic.RunWorkerAsync()
+
+    Private Sub MusicTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MusicTimer.Tick
+        currentSongLength -= MusicTimer.Interval / 1000
+        If currentSongLength <= 0 Then
+            If repeat Then
+                PlayMusic()
+            ElseIf shuffle Then
+                PlayMusic()
+            ElseIf songNumber = MAXSONGS - 1 Then
+                StopMusic()
+            Else
+                songNumber += 1
+                PlayMusic()
+            End If
         End If
+
     End Sub
+
     'Toggle play/stop which we'll call pause for now
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
         If playing Then
-
-            BackgroundWorkerMusic.CancelAsync()
-            My.Computer.Audio.Stop()
-            PlayButton.BackgroundImage = My.Resources.play_512
+            StopMusic()
         Else
-            'songs = "Zelda_A_Link_To_The_Past_Chest_Fanfare"
-            Me.BackgroundWorkerMusic.WorkerSupportsCancellation = True
-            Me.BackgroundWorkerMusic.RunWorkerAsync()
-            PlayButton.BackgroundImage = My.Resources.pause_512
+            PlayMusic()
         End If
-        playing = Not playing
+        'playing = Not playing
+    End Sub
+    'Stop
+    Private Sub StopMusic()
+        My.Computer.Audio.Stop()
+        PlayButton.BackgroundImage = My.Resources.play_512
+        playing = False
+        MusicTimer.Stop()
+        NowPlaying.Visible = False
+    End Sub
+    ' Play
+    Private Sub PlayMusic()
+        currentSongLength = songLength(songNumber)
+        My.Computer.Audio.Play(My.Resources.ResourceManager.GetObject(songs(songNumber)), _
+                               AudioPlayMode.Background)
+        PlayButton.BackgroundImage = My.Resources.pause_512
+        playing = True
+        NowPlaying.Text = "Playing: " + songName(songNumber)
+        NowPlaying.Visible = True
+        MusicTimer.Start()
     End Sub
 
     ' Toggle Repeat
@@ -105,4 +137,19 @@
         shuffle = Not shuffle
     End Sub
 
+    Private Sub NextButton_Click(sender As Object, e As EventArgs) Handles NextButton.Click
+        If songNumber + 1 < MAXSONGS Then
+            songNumber += 1
+            PlayMusic()
+        Else
+            StopMusic()
+        End If
+    End Sub
+
+    Private Sub PreviousButton_Click(sender As Object, e As EventArgs) Handles PreviousButton.Click
+        If songNumber - 1 >= 0 Then
+            songNumber -= 1
+            PlayMusic()
+        End If
+    End Sub
 End Class

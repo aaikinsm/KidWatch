@@ -22,6 +22,7 @@ Partial Class KidWatch
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MainTabControl = New System.Windows.Forms.TabControl()
         Me.Main = New System.Windows.Forms.TabPage()
         Me.CalendarButton = New System.Windows.Forms.Button()
@@ -46,6 +47,10 @@ Partial Class KidWatch
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorkerMusic = New System.ComponentModel.BackgroundWorker()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.Disrupt = New System.Windows.Forms.TabPage()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,6 +106,7 @@ Partial Class KidWatch
         Me.MusicButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.music_icon
         Me.MusicButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.MusicButton.Location = New System.Drawing.Point(95, 83)
+        Me.MusicButton.Location = New System.Drawing.Point(54, 83)
         Me.MusicButton.Name = "MusicButton"
         Me.MusicButton.Size = New System.Drawing.Size(50, 50)
         Me.MusicButton.TabIndex = 2
@@ -198,6 +204,7 @@ Partial Class KidWatch
         '
         Me.NowPlaying.AutoSize = True
         Me.NowPlaying.Location = New System.Drawing.Point(17, 17)
+        Me.NowPlaying.Location = New System.Drawing.Point(3, 17)
         Me.NowPlaying.Name = "NowPlaying"
         Me.NowPlaying.Size = New System.Drawing.Size(44, 13)
         Me.NowPlaying.TabIndex = 2
@@ -303,6 +310,7 @@ Partial Class KidWatch
         Me.PictureBox2.TabStop = False
         '
         'BackgroundWorkerMusic
+        'MusicTimer
         '
         '
         'KidWatch
@@ -344,7 +352,6 @@ Partial Class KidWatch
     Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
     Friend WithEvents MusicButton As System.Windows.Forms.Button
     Friend WithEvents PlayButton As System.Windows.Forms.Button
-    Friend WithEvents BackgroundWorkerMusic As System.ComponentModel.BackgroundWorker
     Friend WithEvents PreviousButton As System.Windows.Forms.Button
     Friend WithEvents NextButton As System.Windows.Forms.Button
     Friend WithEvents NowPlaying As System.Windows.Forms.Label
@@ -354,5 +361,6 @@ Partial Class KidWatch
     Friend WithEvents CalendarButton As System.Windows.Forms.Button
     Friend WithEvents CalendarPicker As System.Windows.Forms.DateTimePicker
     Friend WithEvents calendarLabel As System.Windows.Forms.Label
+    Friend WithEvents MusicTimer As System.Windows.Forms.Timer
 
 End Class
