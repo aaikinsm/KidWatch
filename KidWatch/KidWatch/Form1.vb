@@ -99,7 +99,7 @@
     End Sub
 
 
-    Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles time.MouseEnter
+    Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles time.MouseClick
         MainTabControl.SelectedTab = Main
     End Sub
 
@@ -386,5 +386,9 @@
 
     Private Sub dismissReminder_Click(sender As Object, e As EventArgs) Handles dismissReminder.Click
         MainTabControl.SelectedTab = pastTabPage
+    End Sub
+
+    Private Sub HomeBtn_Click(sender As Object, e As EventArgs) Handles HomeBtn.Click
+        MainTabControl.SelectedTab = Main
     End Sub
 End Class

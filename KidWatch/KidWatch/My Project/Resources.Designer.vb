@@ -257,5 +257,15 @@ Namespace My.Resources
                 Return ResourceManager.GetStream("Zelda_A_Link_To_The_Past_Chest_Fanfare", resourceCulture)
             End Get
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property zip() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("zip", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
     End Module
 End Namespace

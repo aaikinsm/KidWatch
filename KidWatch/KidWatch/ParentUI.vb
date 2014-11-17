@@ -18,4 +18,9 @@
         ParentAccept.Hide()
         KidWatch.HangUpBtn.Text = "Hang up"
     End Sub
+
+    Private Sub ParentUI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TabControl.Appearance = TabAppearance.FlatButtons
+        TabControl.ItemSize = New Size(0, 1)
+    End Sub
 End Class

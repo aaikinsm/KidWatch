@@ -26,16 +26,16 @@ Partial Class ParentUI
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.TabControl = New System.Windows.Forms.TabControl()
-        Me.ParentCallPage = New System.Windows.Forms.TabPage()
         Me.TrackChild = New System.Windows.Forms.TabPage()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.ParentCallTitle = New System.Windows.Forms.Label()
-        Me.ParentAccept = New System.Windows.Forms.Button()
+        Me.ParentCallPage = New System.Windows.Forms.TabPage()
         Me.ParentHangUp = New System.Windows.Forms.Button()
+        Me.ParentAccept = New System.Windows.Forms.Button()
+        Me.ParentCallTitle = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl.SuspendLayout()
-        Me.ParentCallPage.SuspendLayout()
         Me.TrackChild.SuspendLayout()
+        Me.ParentCallPage.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -78,6 +78,19 @@ Partial Class ParentUI
         Me.TabControl.Size = New System.Drawing.Size(218, 314)
         Me.TabControl.TabIndex = 3
         '
+        'TrackChild
+        '
+        Me.TrackChild.Controls.Add(Me.CallJimmy)
+        Me.TrackChild.Controls.Add(Me.Label1)
+        Me.TrackChild.Controls.Add(Me.PictureBox1)
+        Me.TrackChild.Location = New System.Drawing.Point(4, 22)
+        Me.TrackChild.Name = "TrackChild"
+        Me.TrackChild.Padding = New System.Windows.Forms.Padding(3)
+        Me.TrackChild.Size = New System.Drawing.Size(210, 288)
+        Me.TrackChild.TabIndex = 1
+        Me.TrackChild.Text = "Track Child"
+        Me.TrackChild.UseVisualStyleBackColor = True
+        '
         'ParentCallPage
         '
         Me.ParentCallPage.BackColor = System.Drawing.Color.LemonChiffon
@@ -93,28 +106,27 @@ Partial Class ParentUI
         Me.ParentCallPage.TabIndex = 0
         Me.ParentCallPage.Text = "Call"
         '
-        'TrackChild
+        'ParentHangUp
         '
-        Me.TrackChild.Controls.Add(Me.CallJimmy)
-        Me.TrackChild.Controls.Add(Me.Label1)
-        Me.TrackChild.Controls.Add(Me.PictureBox1)
-        Me.TrackChild.Location = New System.Drawing.Point(4, 22)
-        Me.TrackChild.Name = "TrackChild"
-        Me.TrackChild.Padding = New System.Windows.Forms.Padding(3)
-        Me.TrackChild.Size = New System.Drawing.Size(210, 288)
-        Me.TrackChild.TabIndex = 1
-        Me.TrackChild.Text = "Track Child"
-        Me.TrackChild.UseVisualStyleBackColor = True
+        Me.ParentHangUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ParentHangUp.ForeColor = System.Drawing.Color.Red
+        Me.ParentHangUp.Location = New System.Drawing.Point(25, 238)
+        Me.ParentHangUp.Name = "ParentHangUp"
+        Me.ParentHangUp.Size = New System.Drawing.Size(156, 34)
+        Me.ParentHangUp.TabIndex = 3
+        Me.ParentHangUp.Text = "Hang Up"
+        Me.ParentHangUp.UseVisualStyleBackColor = True
         '
-        'PictureBox2
+        'ParentAccept
         '
-        Me.PictureBox2.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
-        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox2.Location = New System.Drawing.Point(25, 64)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(156, 124)
-        Me.PictureBox2.TabIndex = 0
-        Me.PictureBox2.TabStop = False
+        Me.ParentAccept.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ParentAccept.ForeColor = System.Drawing.Color.Green
+        Me.ParentAccept.Location = New System.Drawing.Point(25, 194)
+        Me.ParentAccept.Name = "ParentAccept"
+        Me.ParentAccept.Size = New System.Drawing.Size(156, 38)
+        Me.ParentAccept.TabIndex = 2
+        Me.ParentAccept.Text = "Accept"
+        Me.ParentAccept.UseVisualStyleBackColor = True
         '
         'ParentCallTitle
         '
@@ -128,27 +140,15 @@ Partial Class ParentUI
         Me.ParentCallTitle.TabIndex = 1
         Me.ParentCallTitle.Text = "Call Child"
         '
-        'ParentAccept
+        'PictureBox2
         '
-        Me.ParentAccept.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ParentAccept.ForeColor = System.Drawing.Color.Green
-        Me.ParentAccept.Location = New System.Drawing.Point(25, 194)
-        Me.ParentAccept.Name = "ParentAccept"
-        Me.ParentAccept.Size = New System.Drawing.Size(156, 38)
-        Me.ParentAccept.TabIndex = 2
-        Me.ParentAccept.Text = "Accept"
-        Me.ParentAccept.UseVisualStyleBackColor = True
-        '
-        'ParentHangUp
-        '
-        Me.ParentHangUp.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ParentHangUp.ForeColor = System.Drawing.Color.Red
-        Me.ParentHangUp.Location = New System.Drawing.Point(25, 238)
-        Me.ParentHangUp.Name = "ParentHangUp"
-        Me.ParentHangUp.Size = New System.Drawing.Size(156, 34)
-        Me.ParentHangUp.TabIndex = 3
-        Me.ParentHangUp.Text = "Hang Up"
-        Me.ParentHangUp.UseVisualStyleBackColor = True
+        Me.PictureBox2.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox2.Location = New System.Drawing.Point(25, 64)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(156, 124)
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
         '
         'ParentUI
         '
@@ -160,10 +160,10 @@ Partial Class ParentUI
         Me.Text = "ParentUI"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl.ResumeLayout(False)
-        Me.ParentCallPage.ResumeLayout(False)
-        Me.ParentCallPage.PerformLayout()
         Me.TrackChild.ResumeLayout(False)
         Me.TrackChild.PerformLayout()
+        Me.ParentCallPage.ResumeLayout(False)
+        Me.ParentCallPage.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

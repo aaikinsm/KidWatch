@@ -70,21 +70,22 @@ Partial Class KidWatch
         Me.CallThomasBtn = New System.Windows.Forms.Button()
         Me.CallDadBtn = New System.Windows.Forms.Button()
         Me.CallMomBtn = New System.Windows.Forms.Button()
-        Me.VScrollBar1 = New System.Windows.Forms.VScrollBar()
         Me.CallPage = New System.Windows.Forms.TabPage()
         Me.HangUpBtn = New System.Windows.Forms.Button()
         Me.AcceptBtn = New System.Windows.Forms.Button()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.CallTitle = New System.Windows.Forms.Label()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.Reminder = New System.Windows.Forms.TabPage()
+        Me.dismissReminder = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.reminderTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Reminder = New System.Windows.Forms.TabPage()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.dismissReminder = New System.Windows.Forms.Button()
+        Me.HomeBtn = New System.Windows.Forms.Button()
+        Me.VScrollBar1 = New System.Windows.Forms.VScrollBar()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -180,7 +181,7 @@ Partial Class KidWatch
         Me.WatchBgImg.Image = Global.KidWatch.My.Resources.Resources.blue
         Me.WatchBgImg.Location = New System.Drawing.Point(0, 0)
         Me.WatchBgImg.Name = "WatchBgImg"
-        Me.WatchBgImg.Size = New System.Drawing.Size(151, 151)
+        Me.WatchBgImg.Size = New System.Drawing.Size(157, 151)
         Me.WatchBgImg.TabIndex = 0
         Me.WatchBgImg.TabStop = False
         '
@@ -646,19 +647,12 @@ Partial Class KidWatch
         Me.CallMomBtn.Text = "Mom"
         Me.CallMomBtn.UseVisualStyleBackColor = True
         '
-        'VScrollBar1
-        '
-        Me.VScrollBar1.Location = New System.Drawing.Point(128, 0)
-        Me.VScrollBar1.Name = "VScrollBar1"
-        Me.VScrollBar1.Size = New System.Drawing.Size(22, 154)
-        Me.VScrollBar1.TabIndex = 0
-        '
         'CallPage
         '
         Me.CallPage.Controls.Add(Me.HangUpBtn)
         Me.CallPage.Controls.Add(Me.AcceptBtn)
-        Me.CallPage.Controls.Add(Me.PictureBox7)
         Me.CallPage.Controls.Add(Me.CallTitle)
+        Me.CallPage.Controls.Add(Me.PictureBox7)
         Me.CallPage.Location = New System.Drawing.Point(4, 22)
         Me.CallPage.Name = "CallPage"
         Me.CallPage.Padding = New System.Windows.Forms.Padding(3)
@@ -690,16 +684,6 @@ Partial Class KidWatch
         Me.AcceptBtn.UseVisualStyleBackColor = True
         Me.AcceptBtn.Visible = False
         '
-        'PictureBox7
-        '
-        Me.PictureBox7.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
-        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox7.Location = New System.Drawing.Point(0, 37)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(153, 56)
-        Me.PictureBox7.TabIndex = 1
-        Me.PictureBox7.TabStop = False
-        '
         'CallTitle
         '
         Me.CallTitle.AutoSize = True
@@ -711,16 +695,15 @@ Partial Class KidWatch
         Me.CallTitle.Text = "Calling Mom"
         Me.CallTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'MusicTimer
+        'PictureBox7
         '
-        '
-        'ClockTimer
-        '
-        '
-        'reminderTimer
-        '
-        Me.reminderTimer.Enabled = True
-        Me.reminderTimer.Interval = 1000
+        Me.PictureBox7.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
+        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox7.Location = New System.Drawing.Point(0, 37)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(153, 56)
+        Me.PictureBox7.TabIndex = 1
+        Me.PictureBox7.TabStop = False
         '
         'Reminder
         '
@@ -735,27 +718,15 @@ Partial Class KidWatch
         Me.Reminder.Text = "Reminder"
         Me.Reminder.UseVisualStyleBackColor = True
         '
-        'Label2
+        'dismissReminder
         '
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(3, 14)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(147, 23)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Event Reminder"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label3
-        '
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(3, 60)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(147, 61)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Meet Jason to exchange pokemon cards outside of gym"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.dismissReminder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dismissReminder.Location = New System.Drawing.Point(8, 120)
+        Me.dismissReminder.Name = "dismissReminder"
+        Me.dismissReminder.Size = New System.Drawing.Size(134, 23)
+        Me.dismissReminder.TabIndex = 3
+        Me.dismissReminder.Text = "Dismiss"
+        Me.dismissReminder.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -768,22 +739,64 @@ Partial Class KidWatch
         Me.Label4.Text = "happening now!"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'dismissReminder
+        'Label3
         '
-        Me.dismissReminder.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dismissReminder.Location = New System.Drawing.Point(8, 120)
-        Me.dismissReminder.Name = "dismissReminder"
-        Me.dismissReminder.Size = New System.Drawing.Size(134, 23)
-        Me.dismissReminder.TabIndex = 3
-        Me.dismissReminder.Text = "Dismiss"
-        Me.dismissReminder.UseVisualStyleBackColor = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(3, 60)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(147, 61)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Meet Jason to exchange pokemon cards outside of gym"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label2
+        '
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Red
+        Me.Label2.Location = New System.Drawing.Point(3, 14)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(147, 23)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Event Reminder"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MusicTimer
+        '
+        '
+        'ClockTimer
+        '
+        '
+        'reminderTimer
+        '
+        Me.reminderTimer.Enabled = True
+        Me.reminderTimer.Interval = 1000
+        '
+        'HomeBtn
+        '
+        Me.HomeBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.HomeBtn.Location = New System.Drawing.Point(135, 38)
+        Me.HomeBtn.Name = "HomeBtn"
+        Me.HomeBtn.Size = New System.Drawing.Size(26, 23)
+        Me.HomeBtn.TabIndex = 3
+        Me.HomeBtn.Text = "<|"
+        Me.HomeBtn.UseVisualStyleBackColor = True
+        '
+        'VScrollBar1
+        '
+        Me.VScrollBar1.Enabled = False
+        Me.VScrollBar1.Location = New System.Drawing.Point(128, 3)
+        Me.VScrollBar1.Name = "VScrollBar1"
+        Me.VScrollBar1.Size = New System.Drawing.Size(22, 151)
+        Me.VScrollBar1.TabIndex = 0
         '
         'KidWatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.ClientSize = New System.Drawing.Size(153, 178)
+        Me.ClientSize = New System.Drawing.Size(167, 178)
+        Me.Controls.Add(Me.HomeBtn)
         Me.Controls.Add(Me.MainTabControl)
         Me.Name = "KidWatch"
         Me.Text = "KidWatch"
@@ -856,7 +869,6 @@ Partial Class KidWatch
     Friend WithEvents PhoneBook As System.Windows.Forms.TabPage
     Friend WithEvents CallDadBtn As System.Windows.Forms.Button
     Friend WithEvents CallMomBtn As System.Windows.Forms.Button
-    Friend WithEvents VScrollBar1 As System.Windows.Forms.VScrollBar
     Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
     Friend WithEvents CallJesBtn As System.Windows.Forms.Button
     Friend WithEvents CallThomasBtn As System.Windows.Forms.Button
@@ -872,5 +884,7 @@ Partial Class KidWatch
     Friend WithEvents dismissReminder As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents HomeBtn As System.Windows.Forms.Button
+    Friend WithEvents VScrollBar1 As System.Windows.Forms.VScrollBar
 
 End Class
