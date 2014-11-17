@@ -19,7 +19,6 @@
     '    configuration (1 each) 
     'Children Watch
     '    • choose watch face(2)
-    '    • Be reminded of appointments (2), hide reminder (1) <- nik is doing this right now
     '    • Leave message (1), automatic redial (2)
     '    • Send voice(1), video(2) or picture (2) message
     '    • Receive message(1) and listen to/view it (2)
@@ -45,10 +44,11 @@
     Dim songName() As String = {"Chest", "Dark World Jazz"}
     Dim songNumber As Integer = 0
     Dim currentSongLength As Double
-    Dim reminderCounter As Integer = 0
 
     'Variables for calendar
     Dim eventsDict As New Dictionary(Of DateTime, String)
+    Dim reminderCounter As Integer = 0
+    Dim pastTabPage
 
     'Main menu scroll
     Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown
@@ -133,9 +133,14 @@
     Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
         reminderCounter += 1
 
-        If reminderCounter >= 60 Then
-            ' pop up a reminder
+        Console.WriteLine(reminderCounter)
 
+        If reminderCounter >= 10 Then
+            ' pop up a reminder
+            pastTabPage = MainTabControl.SelectedTab
+            MainTabControl.SelectedTab = Reminder
+
+            reminderTimer.Stop()
         End If
     End Sub
 
@@ -379,4 +384,7 @@
         ParentUI.ParentHangUp.Text = "Hang Up"
     End Sub
 
+    Private Sub dismissReminder_Click(sender As Object, e As EventArgs) Handles dismissReminder.Click
+        MainTabControl.SelectedTab = pastTabPage
+    End Sub
 End Class
