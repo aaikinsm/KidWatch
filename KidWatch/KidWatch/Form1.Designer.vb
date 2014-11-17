@@ -43,18 +43,29 @@ Partial Class KidWatch
         Me.time = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Calendar = New System.Windows.Forms.TabPage()
-        Me.createEventButton = New System.Windows.Forms.Button()
-        Me.eventNameBox = New System.Windows.Forms.TextBox()
-        Me.eventLabel = New System.Windows.Forms.Label()
-        Me.eventName = New System.Windows.Forms.Label()
-        Me.calendarLabel = New System.Windows.Forms.Label()
-        Me.CalendarPicker = New System.Windows.Forms.DateTimePicker()
+        Me.dayEventTime2 = New System.Windows.Forms.Label()
+        Me.dayEventName2 = New System.Windows.Forms.Label()
+        Me.dayEventTime1 = New System.Windows.Forms.Label()
+        Me.dayEventName1 = New System.Windows.Forms.Label()
+        Me.day7Button = New System.Windows.Forms.Button()
+        Me.day6Button = New System.Windows.Forms.Button()
+        Me.day5Button = New System.Windows.Forms.Button()
+        Me.day4Button = New System.Windows.Forms.Button()
+        Me.day3Button = New System.Windows.Forms.Button()
+        Me.day2Button = New System.Windows.Forms.Button()
+        Me.day1Button = New System.Windows.Forms.Button()
+        Me.weekButton = New System.Windows.Forms.Button()
+        Me.calendarTitle = New System.Windows.Forms.Label()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Playlist = New System.Windows.Forms.TabPage()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.eventName = New System.Windows.Forms.Label()
+        Me.eventTime = New System.Windows.Forms.Label()
+        Me.dayButton = New System.Windows.Forms.Button()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -280,12 +291,22 @@ Partial Class KidWatch
         '
         'Calendar
         '
-        Me.Calendar.Controls.Add(Me.createEventButton)
-        Me.Calendar.Controls.Add(Me.eventNameBox)
-        Me.Calendar.Controls.Add(Me.eventLabel)
+        Me.Calendar.Controls.Add(Me.dayButton)
+        Me.Calendar.Controls.Add(Me.eventTime)
         Me.Calendar.Controls.Add(Me.eventName)
-        Me.Calendar.Controls.Add(Me.calendarLabel)
-        Me.Calendar.Controls.Add(Me.CalendarPicker)
+        Me.Calendar.Controls.Add(Me.dayEventTime2)
+        Me.Calendar.Controls.Add(Me.dayEventName2)
+        Me.Calendar.Controls.Add(Me.dayEventTime1)
+        Me.Calendar.Controls.Add(Me.dayEventName1)
+        Me.Calendar.Controls.Add(Me.day7Button)
+        Me.Calendar.Controls.Add(Me.day6Button)
+        Me.Calendar.Controls.Add(Me.day5Button)
+        Me.Calendar.Controls.Add(Me.day4Button)
+        Me.Calendar.Controls.Add(Me.day3Button)
+        Me.Calendar.Controls.Add(Me.day2Button)
+        Me.Calendar.Controls.Add(Me.day1Button)
+        Me.Calendar.Controls.Add(Me.weekButton)
+        Me.Calendar.Controls.Add(Me.calendarTitle)
         Me.Calendar.Controls.Add(Me.PictureBox5)
         Me.Calendar.Location = New System.Drawing.Point(4, 22)
         Me.Calendar.Name = "Calendar"
@@ -295,54 +316,164 @@ Partial Class KidWatch
         Me.Calendar.Text = "Calendar"
         Me.Calendar.UseVisualStyleBackColor = True
         '
-        'createEventButton
+        'dayEventTime2
         '
-        Me.createEventButton.Location = New System.Drawing.Point(35, 119)
-        Me.createEventButton.Name = "createEventButton"
-        Me.createEventButton.Size = New System.Drawing.Size(75, 23)
-        Me.createEventButton.TabIndex = 6
-        Me.createEventButton.Text = "Create"
-        Me.createEventButton.UseVisualStyleBackColor = True
+        Me.dayEventTime2.AutoSize = True
+        Me.dayEventTime2.Location = New System.Drawing.Point(6, 119)
+        Me.dayEventTime2.Name = "dayEventTime2"
+        Me.dayEventTime2.Size = New System.Drawing.Size(34, 13)
+        Me.dayEventTime2.TabIndex = 17
+        Me.dayEventTime2.Text = "10:45"
+        Me.dayEventTime2.Visible = False
         '
-        'eventNameBox
+        'dayEventName2
         '
-        Me.eventNameBox.Location = New System.Drawing.Point(6, 93)
-        Me.eventNameBox.Name = "eventNameBox"
-        Me.eventNameBox.Size = New System.Drawing.Size(135, 20)
-        Me.eventNameBox.TabIndex = 5
+        Me.dayEventName2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dayEventName2.Location = New System.Drawing.Point(6, 94)
+        Me.dayEventName2.MaximumSize = New System.Drawing.Size(134, 25)
+        Me.dayEventName2.Name = "dayEventName2"
+        Me.dayEventName2.Size = New System.Drawing.Size(134, 25)
+        Me.dayEventName2.TabIndex = 16
+        Me.dayEventName2.Text = "bedtime"
+        Me.dayEventName2.Visible = False
         '
-        'eventLabel
+        'dayEventTime1
         '
-        Me.eventLabel.Location = New System.Drawing.Point(3, 42)
-        Me.eventLabel.Name = "eventLabel"
-        Me.eventLabel.Size = New System.Drawing.Size(141, 48)
-        Me.eventLabel.TabIndex = 4
-        Me.eventLabel.Text = "please enter the name of the event"
+        Me.dayEventTime1.AutoSize = True
+        Me.dayEventTime1.Location = New System.Drawing.Point(6, 65)
+        Me.dayEventTime1.Name = "dayEventTime1"
+        Me.dayEventTime1.Size = New System.Drawing.Size(34, 13)
+        Me.dayEventTime1.TabIndex = 15
+        Me.dayEventTime1.Text = "10:45"
+        Me.dayEventTime1.Visible = False
         '
-        'eventName
+        'dayEventName1
         '
-        Me.eventName.AutoSize = True
-        Me.eventName.Location = New System.Drawing.Point(9, 46)
-        Me.eventName.Name = "eventName"
-        Me.eventName.Size = New System.Drawing.Size(0, 13)
-        Me.eventName.TabIndex = 3
+        Me.dayEventName1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dayEventName1.Location = New System.Drawing.Point(6, 40)
+        Me.dayEventName1.MaximumSize = New System.Drawing.Size(134, 25)
+        Me.dayEventName1.Name = "dayEventName1"
+        Me.dayEventName1.Size = New System.Drawing.Size(134, 25)
+        Me.dayEventName1.TabIndex = 14
+        Me.dayEventName1.Text = "pizza at roccos"
+        Me.dayEventName1.Visible = False
         '
-        'calendarLabel
+        'day7Button
         '
-        Me.calendarLabel.AutoSize = True
-        Me.calendarLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.calendarLabel.Location = New System.Drawing.Point(-2, 3)
-        Me.calendarLabel.Name = "calendarLabel"
-        Me.calendarLabel.Size = New System.Drawing.Size(153, 13)
-        Me.calendarLabel.TabIndex = 2
-        Me.calendarLabel.Text = "Pick a date to see events"
+        Me.day7Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day7Button.FlatAppearance.BorderSize = 0
+        Me.day7Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day7Button.Location = New System.Drawing.Point(124, 40)
+        Me.day7Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day7Button.Name = "day7Button"
+        Me.day7Button.Size = New System.Drawing.Size(20, 110)
+        Me.day7Button.TabIndex = 13
+        Me.day7Button.Tag = "7"
+        Me.day7Button.Text = "S 0"
+        Me.day7Button.UseVisualStyleBackColor = False
         '
-        'CalendarPicker
+        'day6Button
         '
-        Me.CalendarPicker.Location = New System.Drawing.Point(6, 19)
-        Me.CalendarPicker.Name = "CalendarPicker"
-        Me.CalendarPicker.Size = New System.Drawing.Size(138, 20)
-        Me.CalendarPicker.TabIndex = 1
+        Me.day6Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day6Button.FlatAppearance.BorderSize = 0
+        Me.day6Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day6Button.Location = New System.Drawing.Point(104, 40)
+        Me.day6Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day6Button.Name = "day6Button"
+        Me.day6Button.Size = New System.Drawing.Size(20, 110)
+        Me.day6Button.TabIndex = 12
+        Me.day6Button.Tag = "6"
+        Me.day6Button.Text = "F 1"
+        Me.day6Button.UseVisualStyleBackColor = False
+        '
+        'day5Button
+        '
+        Me.day5Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day5Button.FlatAppearance.BorderSize = 0
+        Me.day5Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day5Button.Location = New System.Drawing.Point(84, 40)
+        Me.day5Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day5Button.Name = "day5Button"
+        Me.day5Button.Size = New System.Drawing.Size(20, 110)
+        Me.day5Button.TabIndex = 11
+        Me.day5Button.Tag = "5"
+        Me.day5Button.Text = "T 2"
+        Me.day5Button.UseVisualStyleBackColor = False
+        '
+        'day4Button
+        '
+        Me.day4Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day4Button.FlatAppearance.BorderSize = 0
+        Me.day4Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day4Button.Location = New System.Drawing.Point(64, 40)
+        Me.day4Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day4Button.Name = "day4Button"
+        Me.day4Button.Size = New System.Drawing.Size(20, 110)
+        Me.day4Button.TabIndex = 10
+        Me.day4Button.Tag = "4"
+        Me.day4Button.Text = "W 0"
+        Me.day4Button.UseVisualStyleBackColor = False
+        '
+        'day3Button
+        '
+        Me.day3Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day3Button.FlatAppearance.BorderSize = 0
+        Me.day3Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day3Button.Location = New System.Drawing.Point(44, 40)
+        Me.day3Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day3Button.Name = "day3Button"
+        Me.day3Button.Size = New System.Drawing.Size(20, 110)
+        Me.day3Button.TabIndex = 9
+        Me.day3Button.Tag = "3"
+        Me.day3Button.Text = "T 1"
+        Me.day3Button.UseVisualStyleBackColor = False
+        '
+        'day2Button
+        '
+        Me.day2Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day2Button.FlatAppearance.BorderSize = 0
+        Me.day2Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day2Button.Location = New System.Drawing.Point(24, 40)
+        Me.day2Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day2Button.Name = "day2Button"
+        Me.day2Button.Size = New System.Drawing.Size(20, 110)
+        Me.day2Button.TabIndex = 8
+        Me.day2Button.Tag = "2"
+        Me.day2Button.Text = "M 1"
+        Me.day2Button.UseVisualStyleBackColor = False
+        '
+        'day1Button
+        '
+        Me.day1Button.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.day1Button.FlatAppearance.BorderSize = 0
+        Me.day1Button.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.day1Button.Location = New System.Drawing.Point(4, 40)
+        Me.day1Button.Margin = New System.Windows.Forms.Padding(0)
+        Me.day1Button.Name = "day1Button"
+        Me.day1Button.Size = New System.Drawing.Size(20, 110)
+        Me.day1Button.TabIndex = 7
+        Me.day1Button.Tag = "1"
+        Me.day1Button.Text = "S 0"
+        Me.day1Button.UseVisualStyleBackColor = False
+        '
+        'weekButton
+        '
+        Me.weekButton.Location = New System.Drawing.Point(91, 9)
+        Me.weekButton.Name = "weekButton"
+        Me.weekButton.Size = New System.Drawing.Size(54, 23)
+        Me.weekButton.TabIndex = 3
+        Me.weekButton.Text = "Week"
+        Me.weekButton.UseVisualStyleBackColor = True
+        Me.weekButton.Visible = False
+        '
+        'calendarTitle
+        '
+        Me.calendarTitle.AutoSize = True
+        Me.calendarTitle.Location = New System.Drawing.Point(6, 13)
+        Me.calendarTitle.Name = "calendarTitle"
+        Me.calendarTitle.Size = New System.Drawing.Size(72, 13)
+        Me.calendarTitle.TabIndex = 2
+        Me.calendarTitle.Text = "Choose a day"
         '
         'PictureBox5
         '
@@ -388,6 +519,38 @@ Partial Class KidWatch
         '
         'ClockTimer
         '
+        '
+        'eventName
+        '
+        Me.eventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eventName.Location = New System.Drawing.Point(9, 55)
+        Me.eventName.Name = "eventName"
+        Me.eventName.Size = New System.Drawing.Size(131, 39)
+        Me.eventName.TabIndex = 18
+        Me.eventName.Text = "karate time"
+        Me.eventName.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.eventName.Visible = False
+        '
+        'eventTime
+        '
+        Me.eventTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eventTime.Location = New System.Drawing.Point(8, 96)
+        Me.eventTime.Name = "eventTime"
+        Me.eventTime.Size = New System.Drawing.Size(131, 23)
+        Me.eventTime.TabIndex = 19
+        Me.eventTime.Text = "10:45 PM"
+        Me.eventTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.eventTime.Visible = False
+        '
+        'dayButton
+        '
+        Me.dayButton.Location = New System.Drawing.Point(91, 9)
+        Me.dayButton.Name = "dayButton"
+        Me.dayButton.Size = New System.Drawing.Size(54, 23)
+        Me.dayButton.TabIndex = 20
+        Me.dayButton.Text = "Day"
+        Me.dayButton.UseVisualStyleBackColor = True
+        Me.dayButton.Visible = False
         '
         'KidWatch
         '
@@ -435,17 +598,28 @@ Partial Class KidWatch
     Friend WithEvents RepeatButton As System.Windows.Forms.Button
     Friend WithEvents ShufftleButton As System.Windows.Forms.Button
     Friend WithEvents CalendarButton As System.Windows.Forms.Button
-    Friend WithEvents CalendarPicker As System.Windows.Forms.DateTimePicker
-    Friend WithEvents calendarLabel As System.Windows.Forms.Label
     Friend WithEvents MusicTimer As System.Windows.Forms.Timer
-    Friend WithEvents eventName As System.Windows.Forms.Label
-    Friend WithEvents eventLabel As System.Windows.Forms.Label
-    Friend WithEvents eventNameBox As System.Windows.Forms.TextBox
-    Friend WithEvents createEventButton As System.Windows.Forms.Button
     Friend WithEvents callButton As System.Windows.Forms.Button
     Friend WithEvents time As System.Windows.Forms.Label
     Friend WithEvents ClockTimer As System.Windows.Forms.Timer
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Playlist As System.Windows.Forms.TabPage
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents calendarTitle As System.Windows.Forms.Label
+    Friend WithEvents weekButton As System.Windows.Forms.Button
+    Friend WithEvents day7Button As System.Windows.Forms.Button
+    Friend WithEvents day6Button As System.Windows.Forms.Button
+    Friend WithEvents day5Button As System.Windows.Forms.Button
+    Friend WithEvents day4Button As System.Windows.Forms.Button
+    Friend WithEvents day3Button As System.Windows.Forms.Button
+    Friend WithEvents day2Button As System.Windows.Forms.Button
+    Friend WithEvents day1Button As System.Windows.Forms.Button
+    Friend WithEvents dayEventTime2 As System.Windows.Forms.Label
+    Friend WithEvents dayEventName2 As System.Windows.Forms.Label
+    Friend WithEvents dayEventTime1 As System.Windows.Forms.Label
+    Friend WithEvents dayEventName1 As System.Windows.Forms.Label
+    Friend WithEvents eventName As System.Windows.Forms.Label
+    Friend WithEvents eventTime As System.Windows.Forms.Label
+    Friend WithEvents dayButton As System.Windows.Forms.Button
 
 End Class

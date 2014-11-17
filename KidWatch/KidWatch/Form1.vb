@@ -186,35 +186,141 @@
         End If
     End Sub
 
-    Private Sub CalendarPicker_ValueChanged(sender As Object, e As EventArgs) Handles CalendarPicker.ValueChanged
-        If eventsDict.ContainsKey(CalendarPicker.Value.ToString()) Then
-            ' populate event data with details
-            eventLabel.Text = eventsDict.Item(sender.value.ToString())
-            eventNameBox.Visible = False
-            createEventButton.Visible = False
-        Else
-            ' make event creation visible
-            eventLabel.Text = "please enter the name of the event"
-            eventNameBox.Visible = True
-            createEventButton.Visible = True
-        End If
-    End Sub
-
-    Private Sub createEventButton_Click(sender As Object, e As EventArgs) Handles createEventButton.Click
-        If eventNameBox.Text.Length > 0 Then
-            eventsDict.Add(CalendarPicker.Value.ToString(), eventNameBox.Text)
-
-            eventLabel.Text = "created event"
-            eventNameBox.Visible = False
-            createEventButton.Visible = False
-
-            eventNameBox.Text = ""
-        Else
-            eventLabel.Text = "event name missing"
-        End If
-    End Sub
-
     Private Sub PlaylistButton_Click(sender As Object, e As EventArgs) Handles PlaylistButton.Click
         MainTabControl.SelectedTab = Playlist
+    End Sub
+
+    Private Sub hideWeek()
+        day1Button.Visible = False
+        day2Button.Visible = False
+        day3Button.Visible = False
+        day4Button.Visible = False
+        day5Button.Visible = False
+        day6Button.Visible = False
+        day7Button.Visible = False
+    End Sub
+
+    Private Sub showWeek()
+        day1Button.Visible = True
+        day2Button.Visible = True
+        day3Button.Visible = True
+        day4Button.Visible = True
+        day5Button.Visible = True
+        day6Button.Visible = True
+        day7Button.Visible = True
+    End Sub
+
+    Private Sub hideDay()
+        dayEventName1.Visible = False
+        dayEventName2.Visible = False
+        dayEventTime1.Visible = False
+        dayEventTime2.Visible = False
+    End Sub
+
+    Private Sub showDay()
+        dayEventName1.Visible = True
+        dayEventName2.Visible = True
+        dayEventTime1.Visible = True
+        dayEventTime2.Visible = True
+    End Sub
+
+    Private Sub hideEvent()
+        eventName.Visible = False
+        eventTime.Visible = False
+    End Sub
+
+    Private Sub showEvent()
+        eventName.Visible = True
+        eventTime.Visible = True
+    End Sub
+
+    Private Sub weekButton_Click(sender As Object, e As EventArgs) Handles weekButton.Click
+        weekButton.Visible = False
+        calendarTitle.Text = "Choose a day"
+
+        hideDay()
+        showWeek()
+    End Sub
+
+    Private Sub weekDay_Click(sender As Object, e As EventArgs) Handles day1Button.Click, day2Button.Click, day3Button.Click, day4Button.Click, day5Button.Click, day6Button.Click, day7Button.Click
+        weekButton.Visible = True
+
+        If sender.Tag = 1 Then
+            calendarTitle.Text = "Sunday"
+            dayEventName1.Text = "no events"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = ""
+            dayEventTime2.Text = ""
+        ElseIf sender.Tag = 2 Then
+            calendarTitle.Text = "Monday"
+            dayEventName1.Text = "karate"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = "6:00 PM"
+            dayEventTime2.Text = ""
+        ElseIf sender.Tag = 3 Then
+            calendarTitle.Text = "Tuesday"
+            dayEventName1.Text = "soccer practice"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = "5:00 PM"
+            dayEventTime2.Text = ""
+        ElseIf sender.Tag = 4 Then
+            calendarTitle.Text = "Wednesday"
+            dayEventName1.Text = "no events"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = ""
+            dayEventTime2.Text = ""
+        ElseIf sender.Tag = 5 Then
+            calendarTitle.Text = "Thursday"
+            dayEventName1.Text = "birthday party"
+            dayEventName2.Text = "dinner @ grandma's"
+            dayEventTime1.Text = "4:00 PM"
+            dayEventTime2.Text = "7:00 PM"
+        ElseIf sender.Tag = 6 Then
+            calendarTitle.Text = "Friday"
+            dayEventName1.Text = "field trip"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = "9:00 AM"
+            dayEventTime2.Text = ""
+        ElseIf sender.Tag = 7 Then
+            calendarTitle.Text = "Saturday"
+            dayEventName1.Text = "no events"
+            dayEventName2.Text = ""
+            dayEventTime1.Text = ""
+            dayEventTime2.Text = ""
+        Else
+        End If
+
+        hideWeek()
+        showDay()
+    End Sub
+
+    Private Sub dayEventName1_Click(sender As Object, e As EventArgs) Handles dayEventName1.Click
+        eventName.Text = dayEventName1.Text
+        eventTime.Text = dayEventTime1.Text
+
+        hideDay()
+        showEvent()
+
+        weekButton.Visible = False
+        dayButton.Visible = True
+    End Sub
+
+    Private Sub dayEventName2_Click(sender As Object, e As EventArgs) Handles dayEventName2.Click
+        eventName.Text = dayEventName2.Text
+        eventTime.Text = dayEventTime2.Text
+
+        hideDay()
+        showEvent()
+
+        weekButton.Visible = False
+        dayButton.Visible = True
+    End Sub
+
+    Private Sub dayButton_Click(sender As Object, e As EventArgs) Handles dayButton.Click
+        weekButton.Visible = True
+        dayButton.Visible = False
+
+        hideEvent()
+        showDay()
     End Sub
 End Class
