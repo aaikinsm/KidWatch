@@ -20,7 +20,6 @@
     'Children Watch
     '    • choose watch face(2)
     '    • Be reminded of appointments (2), hide reminder (1)
-    '    • View day(1), week(1) schedules and specific appointment (2)
     '    • Leave message (1), automatic redial (2)
     '    • Send voice(1), video(2) or picture (2) message
     '    • Receive message(1) and listen to/view it (2)
