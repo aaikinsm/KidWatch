@@ -25,6 +25,7 @@ Partial Class KidWatch
         Me.components = New System.ComponentModel.Container()
         Me.MainTabControl = New System.Windows.Forms.TabControl()
         Me.Main = New System.Windows.Forms.TabPage()
+        Me.ClockButton = New System.Windows.Forms.Button()
         Me.callButton = New System.Windows.Forms.Button()
         Me.CalendarButton = New System.Windows.Forms.Button()
         Me.MusicButton = New System.Windows.Forms.Button()
@@ -43,6 +44,9 @@ Partial Class KidWatch
         Me.time = New System.Windows.Forms.Label()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Calendar = New System.Windows.Forms.TabPage()
+        Me.dayButton = New System.Windows.Forms.Button()
+        Me.eventTime = New System.Windows.Forms.Label()
+        Me.eventName = New System.Windows.Forms.Label()
         Me.dayEventTime2 = New System.Windows.Forms.Label()
         Me.dayEventName2 = New System.Windows.Forms.Label()
         Me.dayEventTime1 = New System.Windows.Forms.Label()
@@ -75,10 +79,7 @@ Partial Class KidWatch
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.eventName = New System.Windows.Forms.Label()
-        Me.eventTime = New System.Windows.Forms.Label()
-        Me.dayButton = New System.Windows.Forms.Button()
-        Me.ClockButton = New System.Windows.Forms.Button()
+        Me.reminderTimer = New System.Windows.Forms.Timer(Me.components)
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -126,6 +127,16 @@ Partial Class KidWatch
         Me.Main.TabIndex = 0
         Me.Main.Text = "Main"
         Me.Main.UseVisualStyleBackColor = True
+        '
+        'ClockButton
+        '
+        Me.ClockButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.clock
+        Me.ClockButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ClockButton.Location = New System.Drawing.Point(54, 185)
+        Me.ClockButton.Name = "ClockButton"
+        Me.ClockButton.Size = New System.Drawing.Size(50, 50)
+        Me.ClockButton.TabIndex = 5
+        Me.ClockButton.UseVisualStyleBackColor = True
         '
         'callButton
         '
@@ -335,6 +346,38 @@ Partial Class KidWatch
         Me.Calendar.TabIndex = 3
         Me.Calendar.Text = "Calendar"
         Me.Calendar.UseVisualStyleBackColor = True
+        '
+        'dayButton
+        '
+        Me.dayButton.Location = New System.Drawing.Point(91, 9)
+        Me.dayButton.Name = "dayButton"
+        Me.dayButton.Size = New System.Drawing.Size(54, 23)
+        Me.dayButton.TabIndex = 20
+        Me.dayButton.Text = "Day"
+        Me.dayButton.UseVisualStyleBackColor = True
+        Me.dayButton.Visible = False
+        '
+        'eventTime
+        '
+        Me.eventTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eventTime.Location = New System.Drawing.Point(8, 96)
+        Me.eventTime.Name = "eventTime"
+        Me.eventTime.Size = New System.Drawing.Size(131, 23)
+        Me.eventTime.TabIndex = 19
+        Me.eventTime.Text = "10:45 PM"
+        Me.eventTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.eventTime.Visible = False
+        '
+        'eventName
+        '
+        Me.eventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.eventName.Location = New System.Drawing.Point(9, 55)
+        Me.eventName.Name = "eventName"
+        Me.eventName.Size = New System.Drawing.Size(131, 39)
+        Me.eventName.TabIndex = 18
+        Me.eventName.Text = "karate time"
+        Me.eventName.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.eventName.Visible = False
         '
         'dayEventTime2
         '
@@ -667,46 +710,10 @@ Partial Class KidWatch
         'ClockTimer
         '
         '
-        'eventName
+        'reminderTimer
         '
-        Me.eventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.eventName.Location = New System.Drawing.Point(9, 55)
-        Me.eventName.Name = "eventName"
-        Me.eventName.Size = New System.Drawing.Size(131, 39)
-        Me.eventName.TabIndex = 18
-        Me.eventName.Text = "karate time"
-        Me.eventName.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.eventName.Visible = False
-        '
-        'eventTime
-        '
-        Me.eventTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.eventTime.Location = New System.Drawing.Point(8, 96)
-        Me.eventTime.Name = "eventTime"
-        Me.eventTime.Size = New System.Drawing.Size(131, 23)
-        Me.eventTime.TabIndex = 19
-        Me.eventTime.Text = "10:45 PM"
-        Me.eventTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.eventTime.Visible = False
-        '
-        'dayButton
-        '
-        Me.dayButton.Location = New System.Drawing.Point(91, 9)
-        Me.dayButton.Name = "dayButton"
-        Me.dayButton.Size = New System.Drawing.Size(54, 23)
-        Me.dayButton.TabIndex = 20
-        Me.dayButton.Text = "Day"
-        Me.dayButton.UseVisualStyleBackColor = True
-        Me.dayButton.Visible = False
-        'ClockButton
-        '
-        Me.ClockButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.clock
-        Me.ClockButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ClockButton.Location = New System.Drawing.Point(54, 185)
-        Me.ClockButton.Name = "ClockButton"
-        Me.ClockButton.Size = New System.Drawing.Size(50, 50)
-        Me.ClockButton.TabIndex = 5
-        Me.ClockButton.UseVisualStyleBackColor = True
+        Me.reminderTimer.Enabled = True
+        Me.reminderTimer.Interval = 1000
         '
         'KidWatch
         '
@@ -795,5 +802,6 @@ Partial Class KidWatch
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
     Friend WithEvents CallTitle As System.Windows.Forms.Label
     Friend WithEvents ClockButton As System.Windows.Forms.Button
+    Friend WithEvents reminderTimer As System.Windows.Forms.Timer
 
 End Class

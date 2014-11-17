@@ -19,7 +19,7 @@
     '    configuration (1 each) 
     'Children Watch
     '    • choose watch face(2)
-    '    • Be reminded of appointments (2), hide reminder (1)
+    '    • Be reminded of appointments (2), hide reminder (1) <- nik is doing this right now
     '    • Leave message (1), automatic redial (2)
     '    • Send voice(1), video(2) or picture (2) message
     '    • Receive message(1) and listen to/view it (2)
@@ -45,6 +45,7 @@
     Dim songName() As String = {"Chest", "Dark World Jazz"}
     Dim songNumber As Integer = 0
     Dim currentSongLength As Double
+    Dim reminderCounter As Integer = 0
 
     'Variables for calendar
     Dim eventsDict As New Dictionary(Of DateTime, String)
@@ -127,6 +128,15 @@
             End If
         End If
 
+    End Sub
+
+    Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
+        reminderCounter += 1
+
+        If reminderCounter >= 60 Then
+            ' pop up a reminder
+
+        End If
     End Sub
 
     'Toggle play/stop which we'll call pause for now
