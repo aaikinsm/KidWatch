@@ -178,14 +178,29 @@
   <data name="zip" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zip.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="birthday_cake_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\birthday-cake-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Brook_Eyecatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Brook Eyecatch.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bus_4_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bus-4-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendar_3_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar-3-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Chopper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Chopper.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="clenched_fist_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clenched-fist-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Crochet_d_oeil" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Crochet d'oeil.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="doctor_suitecase_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\doctor-suitecase-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="franky" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\franky.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -196,11 +211,17 @@
   <data name="Nami" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Nami.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="planner_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planner-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Robin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Robin.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Sanji" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sanji.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="soccer_3_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soccer-3-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sosdan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sosdan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +247,14 @@
   <data name="time_6_512_red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\time-6-512-red.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="today_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\today-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Usopp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Usopp.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="video_5_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video-5-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Vivi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vivi.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

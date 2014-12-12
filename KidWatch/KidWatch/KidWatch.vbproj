@@ -252,6 +252,33 @@
   <ItemGroup>
     <None Include="Resources\1291876726031.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-3-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planner-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\today-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\video-5-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birthday-cake-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bus-4-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clenched-fist-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-suitecase-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soccer-3-512.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

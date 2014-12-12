@@ -44,7 +44,6 @@ Partial Class KidWatch
         Me.ClockDate = New System.Windows.Forms.Label()
         Me.ClockTime = New System.Windows.Forms.Label()
         Me.Calendar = New System.Windows.Forms.TabPage()
-        Me.dayButton = New System.Windows.Forms.Button()
         Me.eventTime = New System.Windows.Forms.Label()
         Me.eventName = New System.Windows.Forms.Label()
         Me.dayEventTime2 = New System.Windows.Forms.Label()
@@ -58,13 +57,12 @@ Partial Class KidWatch
         Me.day3Button = New System.Windows.Forms.Button()
         Me.day2Button = New System.Windows.Forms.Button()
         Me.day1Button = New System.Windows.Forms.Button()
-        Me.weekButton = New System.Windows.Forms.Button()
-        Me.calendarTitle = New System.Windows.Forms.Label()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Playlist = New System.Windows.Forms.TabPage()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PlaylistIcon2 = New System.Windows.Forms.PictureBox()
+        Me.PlaylistIcon1 = New System.Windows.Forms.PictureBox()
         Me.Playlist2 = New System.Windows.Forms.Label()
         Me.Playlist1 = New System.Windows.Forms.Label()
         Me.PhoneBook = New System.Windows.Forms.TabPage()
@@ -94,6 +92,9 @@ Partial Class KidWatch
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.reminderTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.calendarTitle = New System.Windows.Forms.Label()
+        Me.weekButton = New System.Windows.Forms.Button()
+        Me.dayButton = New System.Windows.Forms.Button()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,7 +106,8 @@ Partial Class KidWatch
         Me.Disrupt.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Playlist.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlaylistIcon2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlaylistIcon1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PhoneBook.SuspendLayout()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CallPage.SuspendLayout()
@@ -371,16 +373,6 @@ Partial Class KidWatch
         Me.Calendar.Text = "Calendar"
         Me.Calendar.UseVisualStyleBackColor = True
         '
-        'dayButton
-        '
-        Me.dayButton.Location = New System.Drawing.Point(91, 9)
-        Me.dayButton.Name = "dayButton"
-        Me.dayButton.Size = New System.Drawing.Size(54, 23)
-        Me.dayButton.TabIndex = 20
-        Me.dayButton.Text = "Day"
-        Me.dayButton.UseVisualStyleBackColor = True
-        Me.dayButton.Visible = False
-        '
         'eventTime
         '
         Me.eventTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -543,25 +535,6 @@ Partial Class KidWatch
         Me.day1Button.Text = "S 0"
         Me.day1Button.UseVisualStyleBackColor = False
         '
-        'weekButton
-        '
-        Me.weekButton.Location = New System.Drawing.Point(91, 9)
-        Me.weekButton.Name = "weekButton"
-        Me.weekButton.Size = New System.Drawing.Size(54, 23)
-        Me.weekButton.TabIndex = 3
-        Me.weekButton.Text = "Week"
-        Me.weekButton.UseVisualStyleBackColor = True
-        Me.weekButton.Visible = False
-        '
-        'calendarTitle
-        '
-        Me.calendarTitle.AutoSize = True
-        Me.calendarTitle.Location = New System.Drawing.Point(6, 13)
-        Me.calendarTitle.Name = "calendarTitle"
-        Me.calendarTitle.Size = New System.Drawing.Size(72, 13)
-        Me.calendarTitle.TabIndex = 2
-        Me.calendarTitle.Text = "Choose a day"
-        '
         'PictureBox5
         '
         Me.PictureBox5.Image = Global.KidWatch.My.Resources.Resources.blue
@@ -594,7 +567,8 @@ Partial Class KidWatch
         'Playlist
         '
         Me.Playlist.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
-        Me.Playlist.Controls.Add(Me.PictureBox1)
+        Me.Playlist.Controls.Add(Me.PlaylistIcon2)
+        Me.Playlist.Controls.Add(Me.PlaylistIcon1)
         Me.Playlist.Controls.Add(Me.Playlist2)
         Me.Playlist.Controls.Add(Me.Playlist1)
         Me.Playlist.Location = New System.Drawing.Point(4, 22)
@@ -605,20 +579,30 @@ Partial Class KidWatch
         Me.Playlist.Text = "Playlist"
         Me.Playlist.UseVisualStyleBackColor = True
         '
-        'PictureBox1
+        'PlaylistIcon2
         '
-        Me.PictureBox1.BackgroundImage = Global.KidWatch.My.Resources.Resources.star_6_512
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(21, 36)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(20, 20)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.PlaylistIcon2.BackgroundImage = Global.KidWatch.My.Resources.Resources.video_5_512
+        Me.PlaylistIcon2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PlaylistIcon2.Location = New System.Drawing.Point(21, 72)
+        Me.PlaylistIcon2.Name = "PlaylistIcon2"
+        Me.PlaylistIcon2.Size = New System.Drawing.Size(30, 30)
+        Me.PlaylistIcon2.TabIndex = 3
+        Me.PlaylistIcon2.TabStop = False
+        '
+        'PlaylistIcon1
+        '
+        Me.PlaylistIcon1.BackgroundImage = Global.KidWatch.My.Resources.Resources.star_6_512
+        Me.PlaylistIcon1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PlaylistIcon1.Location = New System.Drawing.Point(21, 36)
+        Me.PlaylistIcon1.Name = "PlaylistIcon1"
+        Me.PlaylistIcon1.Size = New System.Drawing.Size(30, 30)
+        Me.PlaylistIcon1.TabIndex = 2
+        Me.PlaylistIcon1.TabStop = False
         '
         'Playlist2
         '
         Me.Playlist2.AutoSize = True
-        Me.Playlist2.Location = New System.Drawing.Point(47, 40)
+        Me.Playlist2.Location = New System.Drawing.Point(53, 44)
         Me.Playlist2.Name = "Playlist2"
         Me.Playlist2.Size = New System.Drawing.Size(84, 13)
         Me.Playlist2.TabIndex = 1
@@ -627,7 +611,7 @@ Partial Class KidWatch
         'Playlist1
         '
         Me.Playlist1.AutoSize = True
-        Me.Playlist1.Location = New System.Drawing.Point(59, 73)
+        Me.Playlist1.Location = New System.Drawing.Point(53, 79)
         Me.Playlist1.Name = "Playlist1"
         Me.Playlist1.Size = New System.Drawing.Size(39, 13)
         Me.Playlist1.TabIndex = 0
@@ -892,6 +876,35 @@ Partial Class KidWatch
         Me.reminderTimer.Enabled = True
         Me.reminderTimer.Interval = 1000
         '
+        'calendarTitle
+        '
+        Me.calendarTitle.AutoSize = True
+        Me.calendarTitle.Location = New System.Drawing.Point(6, 13)
+        Me.calendarTitle.Name = "calendarTitle"
+        Me.calendarTitle.Size = New System.Drawing.Size(72, 13)
+        Me.calendarTitle.TabIndex = 2
+        Me.calendarTitle.Text = "Choose a day"
+        '
+        'weekButton
+        '
+        Me.weekButton.Location = New System.Drawing.Point(91, 9)
+        Me.weekButton.Name = "weekButton"
+        Me.weekButton.Size = New System.Drawing.Size(54, 23)
+        Me.weekButton.TabIndex = 3
+        Me.weekButton.Text = "Week"
+        Me.weekButton.UseVisualStyleBackColor = True
+        Me.weekButton.Visible = False
+        '
+        'dayButton
+        '
+        Me.dayButton.Location = New System.Drawing.Point(91, 9)
+        Me.dayButton.Name = "dayButton"
+        Me.dayButton.Size = New System.Drawing.Size(54, 23)
+        Me.dayButton.TabIndex = 20
+        Me.dayButton.Text = "Day"
+        Me.dayButton.UseVisualStyleBackColor = True
+        Me.dayButton.Visible = False
+        '
         'KidWatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -920,7 +933,8 @@ Partial Class KidWatch
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Playlist.ResumeLayout(False)
         Me.Playlist.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlaylistIcon2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlaylistIcon1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PhoneBook.ResumeLayout(False)
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CallPage.ResumeLayout(False)
@@ -956,8 +970,6 @@ Partial Class KidWatch
     Friend WithEvents ClockDate As System.Windows.Forms.Label
     Friend WithEvents Playlist As System.Windows.Forms.TabPage
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents calendarTitle As System.Windows.Forms.Label
-    Friend WithEvents weekButton As System.Windows.Forms.Button
     Friend WithEvents day7Button As System.Windows.Forms.Button
     Friend WithEvents day6Button As System.Windows.Forms.Button
     Friend WithEvents day5Button As System.Windows.Forms.Button
@@ -971,7 +983,6 @@ Partial Class KidWatch
     Friend WithEvents dayEventName1 As System.Windows.Forms.Label
     Friend WithEvents eventName As System.Windows.Forms.Label
     Friend WithEvents eventTime As System.Windows.Forms.Label
-    Friend WithEvents dayButton As System.Windows.Forms.Button
     Friend WithEvents PhoneBook As System.Windows.Forms.TabPage
     Friend WithEvents CallDadBtn As System.Windows.Forms.Button
     Friend WithEvents CallMomBtn As System.Windows.Forms.Button
@@ -993,7 +1004,7 @@ Partial Class KidWatch
     Friend WithEvents HomeBtn As System.Windows.Forms.Button
     Friend WithEvents VScrollBar1 As System.Windows.Forms.VScrollBar
     Friend WithEvents ChangeFace As System.Windows.Forms.Button
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PlaylistIcon1 As System.Windows.Forms.PictureBox
     Friend WithEvents Playlist2 As System.Windows.Forms.Label
     Friend WithEvents Playlist1 As System.Windows.Forms.Label
     Friend WithEvents Faces As System.Windows.Forms.TabPage
@@ -1002,5 +1013,9 @@ Partial Class KidWatch
     Friend WithEvents Face4 As System.Windows.Forms.Button
     Friend WithEvents Face3 As System.Windows.Forms.Button
     Friend WithEvents Face2 As System.Windows.Forms.Button
+    Friend WithEvents PlaylistIcon2 As System.Windows.Forms.PictureBox
+    Friend WithEvents dayButton As System.Windows.Forms.Button
+    Friend WithEvents weekButton As System.Windows.Forms.Button
+    Friend WithEvents calendarTitle As System.Windows.Forms.Label
 
 End Class
