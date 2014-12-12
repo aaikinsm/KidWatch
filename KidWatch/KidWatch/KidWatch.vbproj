@@ -189,6 +189,69 @@
   <ItemGroup>
     <None Include="Resources\zip.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Brook Eyecatch.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chopper.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Crochet d%27oeil.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\franky.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Luffy.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nami.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Robin.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sanji.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Usopp.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vivi.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Zoro.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sosdan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-6-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stars.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-6-512-black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-6-512-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-6-512-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-6-512-red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trifourec bg.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time-10-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1291876726031.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

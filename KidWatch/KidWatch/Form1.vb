@@ -1,4 +1,6 @@
-﻿Public Class KidWatch
+﻿Imports System.Globalization
+
+Public Class KidWatch
 
     '   _._ 
     '  /,,,\ 
@@ -18,12 +20,10 @@
     '    Screen layouts include access to future features: playlists management, 
     '    configuration (1 each) 
     'Children Watch
-    '    • choose watch face(2)
     '    • Leave message (1), automatic redial (2)
     '    • Send voice(1), video(2) or picture (2) message
     '    • Receive message(1) and listen to/view it (2)
     '    • Review messages (1) and keep(1) or discard them (1)
-    '    • Music: play song(1), pause(1), next/previous song(2), repeat/shuffle(1)
     '    • Make watch non-disruptive/normal(1), non-disruptive options(1)
     'Parent's U.I.
 
@@ -38,12 +38,13 @@
     Dim playing As Boolean = False
     Dim shuffle As Boolean = False
     Dim repeat As Boolean = False
-    Const MAXSONGS As Integer = 2
-    Dim songs() As String = {"Zelda_A_Link_To_The_Past_Chest_Fanfare", "Legend_of_Zelda_A_Link_to_the_Past_Dark_World_Jazz_OC_ReMix"}
-    Dim songLength() As Double = {1.5, 224.5}
-    Dim songName() As String = {"Chest", "Dark World Jazz"}
+    Const MAXSONGS As Integer = 10
+    Dim songs() As String = {"Zelda_A_Link_To_The_Past_Chest_Fanfare", "Luffy", "Zoro", "Nami", "Usopp", "Sanji", "Vivi", "Chopper", "Robin", "franky", "Brook Eyecatch", "Crochet d'oeil"}
+    Dim songLength() As Double = {1.5, 6, 7, 7, 7, 8, 7, 6, 8, 7, 8, 10}
+    Dim songName() As String = {"Chest", "Luffy", "Zoro", "Nami", "Usopp", "Sanji", "Vivi", "Chopper", "Robin", "Franky", "Brook", "Crochet d'oeil"}
     Dim songNumber As Integer = 0
     Dim currentSongLength As Double
+    Dim shuffle_rn As New Random
 
     'Variables for calendar
     Dim eventsDict As New Dictionary(Of DateTime, String)
@@ -79,7 +80,8 @@
         ParentUI.Show()
         Me.Size = New Size(watchwidth, watchHeight)
         Me.MaximumSize = New Size(watchwidth, watchHeight)
-
+        HomeBtn.Location = New Point(watchwidth - 40, 40)
+        Set_Date()
     End Sub
     'Sample tab switching
     Private Sub MusicButton_Click(sender As Object, e As EventArgs) Handles MusicButton.Click
@@ -94,31 +96,79 @@
         MainTabControl.SelectedTab = PhoneBook
     End Sub
 
+    Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles ClockTime.MouseClick
+        MainTabControl.SelectedTab = Main
+    End Sub
     Private Sub ClockButton_MouseClick(sender As Object, e As MouseEventArgs) Handles ClockButton.MouseClick
         MainTabControl.SelectedTab = Clock
     End Sub
 
 
-    Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles time.MouseClick
-        MainTabControl.SelectedTab = Main
-    End Sub
-
-
-
-    Private Sub ClockTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClockTimer.Tick
-        If (My.Computer.Clock.LocalTime.Second Mod 2 = 0) Then
-            time.Text = Format(My.Computer.Clock.LocalTime.Hour) + ":" + Format(My.Computer.Clock.LocalTime.Minute)
-        Else
-            time.Text = Format(My.Computer.Clock.LocalTime.Hour) + " " + Format(My.Computer.Clock.LocalTime.Minute)
+    Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
+        reminderCounter += 1
+        'Console.WriteLine(reminderCounter)
+        If reminderCounter >= 10 Then
+            ' pop up a reminder
+            pastTabPage = MainTabControl.SelectedTab
+            MainTabControl.SelectedTab = Reminder
+            reminderTimer.Stop()
         End If
     End Sub
 
+    '###### Clock and Faces ######
+    'Clock timer
+    Private Sub ClockTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClockTimer.Tick
+        If (My.Computer.Clock.LocalTime.Second Mod 2 = 0) Then
+            ClockTime.Text = Format(My.Computer.Clock.LocalTime.Hour) + ":" + Format(My.Computer.Clock.LocalTime.Minute)
+        Else
+            ClockTime.Text = Format(My.Computer.Clock.LocalTime.Hour) + " " + Format(My.Computer.Clock.LocalTime.Minute)
+        End If
+    End Sub
+    'Sets the current date
+    Private Sub Set_Date()
+        ClockDate.Text = DateTime.Today.ToString("dddd") + " " + DateTime.Today.ToString("MMM") + "." + DateTime.Today.ToString("dd")
+    End Sub
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ChangeFace.Click
+        MainTabControl.SelectedTab = Faces
+    End Sub
+    Private Sub Face1_Click(sender As Object, e As EventArgs) Handles Face1.Click
+        Clock.BackgroundImage = My.Resources.stars
+        ClockDate.ForeColor = Color.Red
+        ClockTime.ForeColor = Color.Red
+        ChangeFace.BackgroundImage = My.Resources.time_6_512_red
+        MainTabControl.SelectedTab = Clock
+    End Sub
+    Private Sub Face3_Click(sender As Object, e As EventArgs) Handles Face3.Click
+        Clock.BackgroundImage = My.Resources.blue
+        ClockDate.ForeColor = Color.Blue
+        ClockTime.ForeColor = Color.Blue
+        ChangeFace.BackgroundImage = My.Resources.time_6_512_blue
+        MainTabControl.SelectedTab = Clock
+    End Sub
+    Private Sub Face2_Click(sender As Object, e As EventArgs) Handles Face2.Click
+        Clock.BackgroundImage = My.Resources.blue
+        ClockDate.ForeColor = Color.Black
+        ClockTime.ForeColor = Color.Black
+        ChangeFace.BackgroundImage = My.Resources.time_6_512_blue
+        MainTabControl.SelectedTab = Clock
+    End Sub
+    Private Sub Face4_Click(sender As Object, e As EventArgs) Handles Face4.Click
+        Clock.BackgroundImage = My.Resources._1291876726031
+        Clock.BackgroundImageLayout = ImageLayout.Stretch
+        ClockDate.ForeColor = Color.Black
+        ClockTime.ForeColor = Color.Black
+        ChangeFace.BackgroundImage = My.Resources.time_6_512_black
+        MainTabControl.SelectedTab = Clock
+    End Sub
+
+    '###### MUSIC PLAYER ######
     Private Sub MusicTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MusicTimer.Tick
         currentSongLength -= MusicTimer.Interval / 1000
         If currentSongLength <= 0 Then
             If repeat Then
                 PlayMusic()
             ElseIf shuffle Then
+                songNumber = shuffle_rn.Next(MAXSONGS)
                 PlayMusic()
             ElseIf songNumber = MAXSONGS - 1 Then
                 StopMusic()
@@ -129,21 +179,6 @@
         End If
 
     End Sub
-
-    Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
-        reminderCounter += 1
-
-        Console.WriteLine(reminderCounter)
-
-        If reminderCounter >= 10 Then
-            ' pop up a reminder
-            pastTabPage = MainTabControl.SelectedTab
-            MainTabControl.SelectedTab = Reminder
-
-            reminderTimer.Stop()
-        End If
-    End Sub
-
     'Toggle play/stop which we'll call pause for now
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
         If playing Then
@@ -172,7 +207,6 @@
         NowPlaying.Visible = True
         MusicTimer.Start()
     End Sub
-
     ' Toggle Repeat
     Private Sub RepeatButton_Click(sender As Object, e As EventArgs) Handles RepeatButton.Click
         If repeat Then
@@ -182,7 +216,6 @@
         End If
         repeat = Not repeat
     End Sub
-
     'Toggle Shuffle
     Private Sub SufftleButton_Click(sender As Object, e As EventArgs) Handles ShufftleButton.Click
         If shuffle Then
@@ -192,27 +225,37 @@
         End If
         shuffle = Not shuffle
     End Sub
-
+    'Next Song
     Private Sub NextButton_Click(sender As Object, e As EventArgs) Handles NextButton.Click
-        If songNumber + 1 < MAXSONGS Then
+        If shuffle Then
+            songNumber = shuffle_rn.Next(MAXSONGS)
+            PlayMusic()
+        ElseIf songNumber + 1 < MAXSONGS Then
             songNumber += 1
             PlayMusic()
         Else
             StopMusic()
         End If
     End Sub
-
+    'Previous Song
     Private Sub PreviousButton_Click(sender As Object, e As EventArgs) Handles PreviousButton.Click
         If songNumber - 1 >= 0 Then
             songNumber -= 1
             PlayMusic()
         End If
     End Sub
-
+    'Playlists
     Private Sub PlaylistButton_Click(sender As Object, e As EventArgs) Handles PlaylistButton.Click
         MainTabControl.SelectedTab = Playlist
     End Sub
+    Private Sub Playlist2_Click(sender As Object, e As EventArgs) Handles Playlist2.Click
+        MainTabControl.SelectedTab = Music
+    End Sub
+    Private Sub Playlist1_Click(sender As Object, e As EventArgs) Handles Playlist1.Click
+        MainTabControl.SelectedTab = Music
+    End Sub
 
+    '###### Calendar ######
     Private Sub hideWeek()
         day1Button.Visible = False
         day2Button.Visible = False
