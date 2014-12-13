@@ -28,9 +28,9 @@ Public Class KidWatch
     'Parent's U.I.
 
 
-    Const watchHeight As Integer = 190
-    Const watchwidth As Integer = 167
-    Private YOfsetCalendar As Integer = 0, YOfsetMusic As Integer = 0, YOfsetCall As Integer = 0, YOfsetClock As Integer = 0
+    Const watchHeight As Integer = 195
+    Const watchwidth As Integer = 170
+    Private YOfsetCalendar As Integer = 0, YOfsetMusic As Integer = 0, YOfsetCall As Integer = 0, YOfsetClock As Integer = 0, YOfsetSend As Integer = 0, YOfsetMessages As Integer = 0
     Private clicked As Boolean = False
     Private locked As Boolean = True
 
@@ -50,14 +50,17 @@ Public Class KidWatch
     Dim eventsDict As New Dictionary(Of DateTime, String)
     Dim reminderCounter As Integer = 0
     Dim pastTabPage
+    'Dim weekdayPictures() As PictureBox = Control.Find()
 
     'Main menu scroll
-    Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown
+    Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown, MessagesButton.MouseDown, SendMessageButton.MouseDown
         clicked = True
         YOfsetCalendar = Cursor.Position.Y - CalendarButton.Location.Y
         YOfsetMusic = Cursor.Position.Y - MusicButton.Location.Y
         YOfsetCall = Cursor.Position.Y - callButton.Location.Y
         YOfsetClock = Cursor.Position.Y - ClockButton.Location.Y
+        YOfsetMessages = Cursor.Position.Y - MessagesButton.Location.Y
+        YOfsetSend = Cursor.Position.Y - SendMessageButton.Location.Y
     End Sub
     Private Sub Menu_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseMove, MusicButton.MouseMove, callButton.MouseMove, WatchBgImg.MouseMove
         If (clicked) Then
@@ -65,12 +68,14 @@ Public Class KidWatch
             MusicButton.Location = New Drawing.Point(MusicButton.Location.X, (Cursor.Position.Y - YOfsetMusic))
             callButton.Location = New Drawing.Point(callButton.Location.X, (Cursor.Position.Y - YOfsetCall))
             ClockButton.Location = New Drawing.Point(ClockButton.Location.X, (Cursor.Position.Y - YOfsetClock))
+            SendMessageButton.Location = New Drawing.Point(SendMessageButton.Location.X, (Cursor.Position.Y - YOfsetSend))
+            MessagesButton.Location = New Drawing.Point(MessagesButton.Location.X, (Cursor.Position.Y - YOfsetMessages))
         End If
     End Sub
     Private Sub Menu_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseUp, MusicButton.MouseUp, callButton.MouseUp, WatchBgImg.MouseUp
         clicked = False
     End Sub
-
+    'At Launch set dynamic paramters
     Private Sub KidWatch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MainTabControl.Appearance = TabAppearance.FlatButtons
         MainTabControl.ItemSize = New Size(0, 1)
@@ -80,29 +85,31 @@ Public Class KidWatch
         ParentUI.Show()
         Me.Size = New Size(watchwidth, watchHeight)
         Me.MaximumSize = New Size(watchwidth, watchHeight)
-        HomeBtn.Location = New Point(watchwidth - 40, 40)
+        HomeBtn.Location = New Point(watchwidth - 40, 10)
         Set_Date()
     End Sub
     'Sample tab switching
     Private Sub MusicButton_Click(sender As Object, e As EventArgs) Handles MusicButton.Click
         MainTabControl.SelectedTab = Music
     End Sub
-
     Private Sub CalendarButton_Click(sender As Object, e As EventArgs) Handles CalendarButton.Click
         MainTabControl.SelectedTab = Calendar
     End Sub
-
     Private Sub callButton_MouseClick(sender As Object, e As MouseEventArgs) Handles callButton.MouseClick
         MainTabControl.SelectedTab = PhoneBook
     End Sub
-
     Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles ClockTime.MouseClick
         MainTabControl.SelectedTab = Main
     End Sub
     Private Sub ClockButton_MouseClick(sender As Object, e As MouseEventArgs) Handles ClockButton.MouseClick
         MainTabControl.SelectedTab = Clock
     End Sub
-
+    Private Sub HomeBtn_Click(sender As Object, e As EventArgs) Handles HomeBtn.Click
+        MainTabControl.SelectedTab = Main
+    End Sub
+    Private Sub MessageButton_Click(sender As Object, e As EventArgs) Handles SendMessageButton.Click
+        MainTabControl.SelectedTab = SendMessage
+    End Sub
 
     Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
         reminderCounter += 1
@@ -118,15 +125,12 @@ Public Class KidWatch
     '###### Clock and Faces ######
     'Clock timer
     Private Sub ClockTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClockTimer.Tick
-        If (My.Computer.Clock.LocalTime.Second Mod 2 = 0) Then
-            ClockTime.Text = Format(My.Computer.Clock.LocalTime.Hour) + ":" + Format(My.Computer.Clock.LocalTime.Minute)
-        Else
-            ClockTime.Text = Format(My.Computer.Clock.LocalTime.Hour) + " " + Format(My.Computer.Clock.LocalTime.Minute)
-        End If
+        ClockTime.Text = Format(My.Computer.Clock.LocalTime, "hh:mm")
     End Sub
     'Sets the current date
     Private Sub Set_Date()
-        ClockDate.Text = DateTime.Today.ToString("dddd") + " " + DateTime.Today.ToString("MMM") + "." + DateTime.Today.ToString("dd")
+        'ClockDate.Text = DateTime.Today.ToString("dddd") + " " + DateTime.Today.ToString("MMM") + "." + DateTime.Today.ToString("dd")
+        ClockDate.Text = DateTime.Today.ToString("yyyy") + "-" + DateTime.Today.ToString("MM") + "-" + DateTime.Today.ToString("dd")
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ChangeFace.Click
         MainTabControl.SelectedTab = Faces
@@ -281,6 +285,8 @@ Public Class KidWatch
         dayEventName2.Visible = False
         dayEventTime1.Visible = False
         dayEventTime2.Visible = False
+        EventPicture1.Visible = False
+        EventPicture2.Visible = False
     End Sub
 
     Private Sub showDay()
@@ -288,126 +294,137 @@ Public Class KidWatch
         dayEventName2.Visible = True
         dayEventTime1.Visible = True
         dayEventTime2.Visible = True
+        EventPicture1.Visible = True
+        EventPicture2.Visible = True
     End Sub
 
-    Private Sub hideEvent()
-        eventName.Visible = False
-        eventTime.Visible = False
+    Private Sub clearWeekdayPictures()
+        Dim weekdayPicture() As PictureBox = {WeekdaySelect1, WeekdaySelect2, WeekdaySelect3, WeekdaySelect4, _
+                                  WeekdaySelect5, WeekdaySelect6, WeekdaySelect7}
+        Dim i As Integer = 0
+        For i = 0 To 6
+            weekdayPicture(i).BackColor = Color.LightGray
+        Next
     End Sub
+    'Private Sub hideEvent()
+    '    'eventName.Visible = False
+    '    'eventTime.Visible = False
+    'End Sub
 
-    Private Sub showEvent()
-        eventName.Visible = True
-        eventTime.Visible = True
-    End Sub
-
+    'Private Sub showEvent()
+    '    'eventName.Visible = True
+    '    'eventTime.Visible = True
+    'End Sub
     Private Sub weekButton_Click(sender As Object, e As EventArgs) Handles weekButton.Click
         weekButton.Visible = False
-        calendarTitle.Text = "Choose a day"
-
+        'calendarTitle.Text = "Choose a day"
+        clearWeekdayPictures()
         hideDay()
         showWeek()
     End Sub
-
     Private Sub weekDay_Click(sender As Object, e As EventArgs) Handles day1Button.Click, day2Button.Click, day3Button.Click, day4Button.Click, day5Button.Click, day6Button.Click, day7Button.Click
         weekButton.Visible = True
-
+        dayEventName1.Text = "no events"
+        dayEventName2.Text = ""
+        dayEventTime1.Text = ""
+        dayEventTime2.Text = ""
+        EventPicture1.BackgroundImage = Nothing
+        EventPicture2.BackgroundImage = Nothing
+        Dim weekdayPicture() As PictureBox = {WeekdaySelect1, WeekdaySelect2, WeekdaySelect3, WeekdaySelect4, _
+                                  WeekdaySelect5, WeekdaySelect6, WeekdaySelect7}
+        weekdayPicture(sender.Tag - 1).BackColor = Color.Green
         If sender.Tag = 1 Then
-            calendarTitle.Text = "Sunday"
-            dayEventName1.Text = "no events"
-            dayEventName2.Text = ""
-            dayEventTime1.Text = ""
-            dayEventTime2.Text = ""
+            '   calendarTitle.Text = "Sunday"
         ElseIf sender.Tag = 2 Then
-            calendarTitle.Text = "Monday"
+            '  calendarTitle.Text = "Monday"
             dayEventName1.Text = "karate"
-            dayEventName2.Text = ""
             dayEventTime1.Text = "6:00 PM"
-            dayEventTime2.Text = ""
+            EventPicture1.BackgroundImage = My.Resources.clenched_fist_512
         ElseIf sender.Tag = 3 Then
-            calendarTitle.Text = "Tuesday"
+            ' calendarTitle.Text = "Tuesday"
             dayEventName1.Text = "soccer practice"
-            dayEventName2.Text = ""
             dayEventTime1.Text = "5:00 PM"
-            dayEventTime2.Text = ""
+            EventPicture1.BackgroundImage = My.Resources.soccer_3_512
         ElseIf sender.Tag = 4 Then
-            calendarTitle.Text = "Wednesday"
-            dayEventName1.Text = "no events"
-            dayEventName2.Text = ""
-            dayEventTime1.Text = ""
-            dayEventTime2.Text = ""
+            'calendarTitle.Text = "Wednesday"
         ElseIf sender.Tag = 5 Then
-            calendarTitle.Text = "Thursday"
+            'calendarTitle.Text = "Thursday"
             dayEventName1.Text = "birthday party"
             dayEventName2.Text = "dinner @ grandma's"
             dayEventTime1.Text = "4:00 PM"
             dayEventTime2.Text = "7:00 PM"
+            EventPicture1.BackgroundImage = My.Resources.birthday_cake_512
+            EventPicture2.BackgroundImage = My.Resources.bread_512
         ElseIf sender.Tag = 6 Then
-            calendarTitle.Text = "Friday"
+            'calendarTitle.Text = "Friday"
             dayEventName1.Text = "field trip"
-            dayEventName2.Text = ""
             dayEventTime1.Text = "9:00 AM"
-            dayEventTime2.Text = ""
+            EventPicture1.BackgroundImage = My.Resources.bus_4_512
         ElseIf sender.Tag = 7 Then
-            calendarTitle.Text = "Saturday"
-            dayEventName1.Text = "no events"
-            dayEventName2.Text = ""
-            dayEventTime1.Text = ""
-            dayEventTime2.Text = ""
+            'calendarTitle.Text = "Saturday"
         Else
         End If
 
         hideWeek()
         showDay()
     End Sub
+    'Private Sub dayEventName1_Click(sender As Object, e As EventArgs) Handles dayEventName1.Click
+    '    'eventName.Text = dayEventName1.Text
+    '    'eventTime.Text = dayEventTime1.Text
 
-    Private Sub dayEventName1_Click(sender As Object, e As EventArgs) Handles dayEventName1.Click
-        eventName.Text = dayEventName1.Text
-        eventTime.Text = dayEventTime1.Text
+    '    hideDay()
+    '    showEvent()
 
-        hideDay()
-        showEvent()
+    '    weekButton.Visible = False
+    '    dayButton.Visible = True
+    'End Sub
 
-        weekButton.Visible = False
-        dayButton.Visible = True
-    End Sub
+    'Private Sub dayEventName2_Click(sender As Object, e As EventArgs) Handles dayEventName2.Click
+    '    'eventName.Text = dayEventName2.Text
+    '    'eventTime.Text = dayEventTime2.Text
 
-    Private Sub dayEventName2_Click(sender As Object, e As EventArgs) Handles dayEventName2.Click
-        eventName.Text = dayEventName2.Text
-        eventTime.Text = dayEventTime2.Text
+    '    hideDay()
+    '    showEvent()
 
-        hideDay()
-        showEvent()
-
-        weekButton.Visible = False
-        dayButton.Visible = True
-    End Sub
-
+    '    weekButton.Visible = False
+    '    dayButton.Visible = True
+    'End Sub
     Private Sub dayButton_Click(sender As Object, e As EventArgs) Handles dayButton.Click
         weekButton.Visible = True
         dayButton.Visible = False
-
-        hideEvent()
+        'hideEvent()
         showDay()
     End Sub
 
+    '###### Phone and Messaging ######
     Private Sub CallBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles CallMomBtn.MouseClick, CallDadBtn.MouseClick, CallThomasBtn.MouseClick, CallJesBtn.MouseClick
         MainTabControl.SelectedTab = CallPage
         AcceptBtn.Hide()
-        HangUpBtn.Text = "Cancel Call"
+        SetCallerPicture(sender.Name)
+        'HangUpBtn.Text = "Cancel Call"
         If sender.Name = "CallMomBtn" Then
-            CallTitle.Text = "Calling Mom"
+            'CallTitle.Text = "Calling Mom"
             ParentUI.TabControl.SelectedTab = ParentUI.ParentCallPage
             ParentUI.ParentCallTitle.Text = "Jimmy"
         ElseIf sender.Name = "CallDadBtn" Then
-            CallTitle.Text = "Calling Dad"
+            'CallTitle.Text = "Calling Dad"
         ElseIf sender.Name = "CallThomasBtn" Then
-            CallTitle.Text = "Calling Thomas"
+            'CallTitle.Text = "Calling Thomas"
         ElseIf sender.Name = "CallJesBtn" Then
-            CallTitle.Text = "Calling Jessica"
+            'CallTitle.Text = "Calling Jessica"
         End If
     End Sub
-
-
+    Private Sub SetCallerPicture(name As String)
+        If name = "CallMomBtn" Then
+            CallerPicture.BackgroundImage = My.Resources.marge
+        ElseIf name = "CallDadBtn" Then
+            CallerPicture.BackgroundImage = My.Resources.homerpoint
+        ElseIf name = "CallThomasBtn" Then
+            CallerPicture.BackgroundImage = My.Resources.BartSimpson13
+        ElseIf name = "CallJesBtn" Then
+            CallerPicture.BackgroundImage = My.Resources.Lisa_Simpson
+        End If
+    End Sub
     Private Sub HangUpBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles HangUpBtn.MouseClick
         MainTabControl.SelectedTab = Main
         ParentUI.TabControl.SelectedTab = ParentUI.TrackChild
@@ -417,7 +434,8 @@ Public Class KidWatch
 
     Public Sub IncomingCall(callerName As String)
         MainTabControl.SelectedTab = CallPage
-        CallTitle.Text = callerName
+        'CallTitle.Text = callerName
+        SetCallerPicture(callerName)
         AcceptBtn.Show()
         HangUpBtn.Text = "Hang Up"
     End Sub
@@ -431,7 +449,5 @@ Public Class KidWatch
         MainTabControl.SelectedTab = pastTabPage
     End Sub
 
-    Private Sub HomeBtn_Click(sender As Object, e As EventArgs) Handles HomeBtn.Click
-        MainTabControl.SelectedTab = Main
-    End Sub
+
 End Class

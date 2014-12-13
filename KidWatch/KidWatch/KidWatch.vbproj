@@ -279,6 +279,81 @@
   <ItemGroup>
     <None Include="Resources\soccer-3-512.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bread-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LisaSimpson.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homerpoint.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conference-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BartSimpson13.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lisa_Simpson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\call-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no_phone_call.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chat-4-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text-justify-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\video-call-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\walkie-talkie-radio-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fox.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Goat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\husky.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ladybug_large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message-outline-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\read-message-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning-4-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Blue.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rabbit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spam.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

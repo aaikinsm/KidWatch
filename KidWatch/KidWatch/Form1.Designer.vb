@@ -25,6 +25,8 @@ Partial Class KidWatch
         Me.components = New System.ComponentModel.Container()
         Me.MainTabControl = New System.Windows.Forms.TabControl()
         Me.Main = New System.Windows.Forms.TabPage()
+        Me.MessagesButton = New System.Windows.Forms.Button()
+        Me.SendMessageButton = New System.Windows.Forms.Button()
         Me.ClockButton = New System.Windows.Forms.Button()
         Me.callButton = New System.Windows.Forms.Button()
         Me.CalendarButton = New System.Windows.Forms.Button()
@@ -44,8 +46,16 @@ Partial Class KidWatch
         Me.ClockDate = New System.Windows.Forms.Label()
         Me.ClockTime = New System.Windows.Forms.Label()
         Me.Calendar = New System.Windows.Forms.TabPage()
-        Me.eventTime = New System.Windows.Forms.Label()
-        Me.eventName = New System.Windows.Forms.Label()
+        Me.WeekdaySelect7 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect6 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect5 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect4 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect3 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect2 = New System.Windows.Forms.PictureBox()
+        Me.WeekdaySelect1 = New System.Windows.Forms.PictureBox()
+        Me.EventPicture2 = New System.Windows.Forms.PictureBox()
+        Me.EventPicture1 = New System.Windows.Forms.PictureBox()
+        Me.dayButton = New System.Windows.Forms.Button()
         Me.dayEventTime2 = New System.Windows.Forms.Label()
         Me.dayEventName2 = New System.Windows.Forms.Label()
         Me.dayEventTime1 = New System.Windows.Forms.Label()
@@ -57,6 +67,7 @@ Partial Class KidWatch
         Me.day3Button = New System.Windows.Forms.Button()
         Me.day2Button = New System.Windows.Forms.Button()
         Me.day1Button = New System.Windows.Forms.Button()
+        Me.weekButton = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Disrupt = New System.Windows.Forms.TabPage()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -66,17 +77,15 @@ Partial Class KidWatch
         Me.Playlist2 = New System.Windows.Forms.Label()
         Me.Playlist1 = New System.Windows.Forms.Label()
         Me.PhoneBook = New System.Windows.Forms.TabPage()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.CallJesBtn = New System.Windows.Forms.Button()
         Me.CallThomasBtn = New System.Windows.Forms.Button()
         Me.CallDadBtn = New System.Windows.Forms.Button()
         Me.CallMomBtn = New System.Windows.Forms.Button()
-        Me.VScrollBar1 = New System.Windows.Forms.VScrollBar()
         Me.CallPage = New System.Windows.Forms.TabPage()
+        Me.CallerPicture = New System.Windows.Forms.PictureBox()
         Me.HangUpBtn = New System.Windows.Forms.Button()
         Me.AcceptBtn = New System.Windows.Forms.Button()
-        Me.CallTitle = New System.Windows.Forms.Label()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.CallingPicture = New System.Windows.Forms.PictureBox()
         Me.Reminder = New System.Windows.Forms.TabPage()
         Me.dismissReminder = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -87,14 +96,16 @@ Partial Class KidWatch
         Me.Face3 = New System.Windows.Forms.Button()
         Me.Face2 = New System.Windows.Forms.Button()
         Me.Face1 = New System.Windows.Forms.Button()
+        Me.SendMessage = New System.Windows.Forms.TabPage()
+        Me.TextMessageBox = New System.Windows.Forms.PictureBox()
+        Me.VideoMessageBox = New System.Windows.Forms.PictureBox()
+        Me.PictureMessageBox = New System.Windows.Forms.PictureBox()
+        Me.VoiceMessageBox = New System.Windows.Forms.PictureBox()
         Me.HomeBtn = New System.Windows.Forms.Button()
         Me.MusicTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ClockTimer = New System.Windows.Forms.Timer(Me.components)
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.reminderTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.calendarTitle = New System.Windows.Forms.Label()
-        Me.weekButton = New System.Windows.Forms.Button()
-        Me.dayButton = New System.Windows.Forms.Button()
         Me.MainTabControl.SuspendLayout()
         Me.Main.SuspendLayout()
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,6 +113,15 @@ Partial Class KidWatch
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Clock.SuspendLayout()
         Me.Calendar.SuspendLayout()
+        CType(Me.WeekdaySelect7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeekdaySelect1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EventPicture2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EventPicture1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Disrupt.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,11 +129,16 @@ Partial Class KidWatch
         CType(Me.PlaylistIcon2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PlaylistIcon1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PhoneBook.SuspendLayout()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CallPage.SuspendLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CallerPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CallingPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Reminder.SuspendLayout()
         Me.Faces.SuspendLayout()
+        Me.SendMessage.SuspendLayout()
+        CType(Me.TextMessageBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VideoMessageBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureMessageBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VoiceMessageBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MainTabControl
@@ -128,6 +153,7 @@ Partial Class KidWatch
         Me.MainTabControl.Controls.Add(Me.CallPage)
         Me.MainTabControl.Controls.Add(Me.Reminder)
         Me.MainTabControl.Controls.Add(Me.Faces)
+        Me.MainTabControl.Controls.Add(Me.SendMessage)
         Me.MainTabControl.Location = New System.Drawing.Point(0, 1)
         Me.MainTabControl.Name = "MainTabControl"
         Me.MainTabControl.SelectedIndex = 0
@@ -138,6 +164,8 @@ Partial Class KidWatch
         '
         Me.Main.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
         Me.Main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Main.Controls.Add(Me.MessagesButton)
+        Me.Main.Controls.Add(Me.SendMessageButton)
         Me.Main.Controls.Add(Me.ClockButton)
         Me.Main.Controls.Add(Me.callButton)
         Me.Main.Controls.Add(Me.CalendarButton)
@@ -150,6 +178,26 @@ Partial Class KidWatch
         Me.Main.TabIndex = 0
         Me.Main.Text = "Main"
         Me.Main.UseVisualStyleBackColor = True
+        '
+        'MessagesButton
+        '
+        Me.MessagesButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.read_message_512
+        Me.MessagesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.MessagesButton.Location = New System.Drawing.Point(80, 167)
+        Me.MessagesButton.Name = "MessagesButton"
+        Me.MessagesButton.Size = New System.Drawing.Size(50, 50)
+        Me.MessagesButton.TabIndex = 7
+        Me.MessagesButton.UseVisualStyleBackColor = True
+        '
+        'SendMessageButton
+        '
+        Me.SendMessageButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.conference_512
+        Me.SendMessageButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.SendMessageButton.Location = New System.Drawing.Point(8, 167)
+        Me.SendMessageButton.Name = "SendMessageButton"
+        Me.SendMessageButton.Size = New System.Drawing.Size(50, 50)
+        Me.SendMessageButton.TabIndex = 6
+        Me.SendMessageButton.UseVisualStyleBackColor = True
         '
         'ClockButton
         '
@@ -173,7 +221,7 @@ Partial Class KidWatch
         '
         'CalendarButton
         '
-        Me.CalendarButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.calendar_icon
+        Me.CalendarButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.calendar_3_512
         Me.CalendarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CalendarButton.Location = New System.Drawing.Point(8, 20)
         Me.CalendarButton.Name = "CalendarButton"
@@ -337,20 +385,27 @@ Partial Class KidWatch
         Me.ClockTime.AutoSize = True
         Me.ClockTime.BackColor = System.Drawing.Color.Transparent
         Me.ClockTime.Font = New System.Drawing.Font("Consolas", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ClockTime.Location = New System.Drawing.Point(37, 50)
+        Me.ClockTime.Location = New System.Drawing.Point(29, 50)
         Me.ClockTime.Name = "ClockTime"
         Me.ClockTime.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
         Me.ClockTime.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ClockTime.Size = New System.Drawing.Size(79, 54)
+        Me.ClockTime.Size = New System.Drawing.Size(95, 54)
         Me.ClockTime.TabIndex = 1
-        Me.ClockTime.Text = "7:45"
+        Me.ClockTime.Text = "07:45"
         Me.ClockTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Calendar
         '
+        Me.Calendar.Controls.Add(Me.WeekdaySelect7)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect6)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect5)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect4)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect3)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect2)
+        Me.Calendar.Controls.Add(Me.WeekdaySelect1)
+        Me.Calendar.Controls.Add(Me.EventPicture2)
+        Me.Calendar.Controls.Add(Me.EventPicture1)
         Me.Calendar.Controls.Add(Me.dayButton)
-        Me.Calendar.Controls.Add(Me.eventTime)
-        Me.Calendar.Controls.Add(Me.eventName)
         Me.Calendar.Controls.Add(Me.dayEventTime2)
         Me.Calendar.Controls.Add(Me.dayEventName2)
         Me.Calendar.Controls.Add(Me.dayEventTime1)
@@ -363,7 +418,6 @@ Partial Class KidWatch
         Me.Calendar.Controls.Add(Me.day2Button)
         Me.Calendar.Controls.Add(Me.day1Button)
         Me.Calendar.Controls.Add(Me.weekButton)
-        Me.Calendar.Controls.Add(Me.calendarTitle)
         Me.Calendar.Controls.Add(Me.PictureBox5)
         Me.Calendar.Location = New System.Drawing.Point(4, 22)
         Me.Calendar.Name = "Calendar"
@@ -373,32 +427,113 @@ Partial Class KidWatch
         Me.Calendar.Text = "Calendar"
         Me.Calendar.UseVisualStyleBackColor = True
         '
-        'eventTime
+        'WeekdaySelect7
         '
-        Me.eventTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.eventTime.Location = New System.Drawing.Point(8, 96)
-        Me.eventTime.Name = "eventTime"
-        Me.eventTime.Size = New System.Drawing.Size(131, 23)
-        Me.eventTime.TabIndex = 19
-        Me.eventTime.Text = "10:45 PM"
-        Me.eventTime.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.eventTime.Visible = False
+        Me.WeekdaySelect7.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect7.Location = New System.Drawing.Point(85, 14)
+        Me.WeekdaySelect7.Name = "WeekdaySelect7"
+        Me.WeekdaySelect7.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect7.TabIndex = 29
+        Me.WeekdaySelect7.TabStop = False
         '
-        'eventName
+        'WeekdaySelect6
         '
-        Me.eventName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.eventName.Location = New System.Drawing.Point(9, 55)
-        Me.eventName.Name = "eventName"
-        Me.eventName.Size = New System.Drawing.Size(131, 39)
-        Me.eventName.TabIndex = 18
-        Me.eventName.Text = "karate time"
-        Me.eventName.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.eventName.Visible = False
+        Me.WeekdaySelect6.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect6.Location = New System.Drawing.Point(71, 14)
+        Me.WeekdaySelect6.Name = "WeekdaySelect6"
+        Me.WeekdaySelect6.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect6.TabIndex = 28
+        Me.WeekdaySelect6.TabStop = False
+        '
+        'WeekdaySelect5
+        '
+        Me.WeekdaySelect5.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect5.Location = New System.Drawing.Point(57, 14)
+        Me.WeekdaySelect5.Name = "WeekdaySelect5"
+        Me.WeekdaySelect5.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect5.TabIndex = 27
+        Me.WeekdaySelect5.TabStop = False
+        '
+        'WeekdaySelect4
+        '
+        Me.WeekdaySelect4.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect4.Location = New System.Drawing.Point(43, 14)
+        Me.WeekdaySelect4.Name = "WeekdaySelect4"
+        Me.WeekdaySelect4.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect4.TabIndex = 26
+        Me.WeekdaySelect4.TabStop = False
+        '
+        'WeekdaySelect3
+        '
+        Me.WeekdaySelect3.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect3.Location = New System.Drawing.Point(29, 14)
+        Me.WeekdaySelect3.Name = "WeekdaySelect3"
+        Me.WeekdaySelect3.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect3.TabIndex = 25
+        Me.WeekdaySelect3.TabStop = False
+        '
+        'WeekdaySelect2
+        '
+        Me.WeekdaySelect2.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect2.Location = New System.Drawing.Point(15, 14)
+        Me.WeekdaySelect2.Name = "WeekdaySelect2"
+        Me.WeekdaySelect2.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect2.TabIndex = 24
+        Me.WeekdaySelect2.TabStop = False
+        '
+        'WeekdaySelect1
+        '
+        Me.WeekdaySelect1.BackColor = System.Drawing.Color.LightGray
+        Me.WeekdaySelect1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.WeekdaySelect1.Location = New System.Drawing.Point(1, 14)
+        Me.WeekdaySelect1.Name = "WeekdaySelect1"
+        Me.WeekdaySelect1.Size = New System.Drawing.Size(14, 14)
+        Me.WeekdaySelect1.TabIndex = 23
+        Me.WeekdaySelect1.TabStop = False
+        '
+        'EventPicture2
+        '
+        Me.EventPicture2.BackgroundImage = Global.KidWatch.My.Resources.Resources.doctor_suitecase_512
+        Me.EventPicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.EventPicture2.Location = New System.Drawing.Point(0, 93)
+        Me.EventPicture2.Name = "EventPicture2"
+        Me.EventPicture2.Size = New System.Drawing.Size(50, 50)
+        Me.EventPicture2.TabIndex = 22
+        Me.EventPicture2.TabStop = False
+        Me.EventPicture2.Visible = False
+        '
+        'EventPicture1
+        '
+        Me.EventPicture1.BackgroundImage = Global.KidWatch.My.Resources.Resources.birthday_cake_512
+        Me.EventPicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.EventPicture1.Location = New System.Drawing.Point(0, 40)
+        Me.EventPicture1.Name = "EventPicture1"
+        Me.EventPicture1.Size = New System.Drawing.Size(50, 50)
+        Me.EventPicture1.TabIndex = 21
+        Me.EventPicture1.TabStop = False
+        Me.EventPicture1.Visible = False
+        '
+        'dayButton
+        '
+        Me.dayButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.today_512
+        Me.dayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.dayButton.Location = New System.Drawing.Point(101, 0)
+        Me.dayButton.Name = "dayButton"
+        Me.dayButton.Size = New System.Drawing.Size(40, 40)
+        Me.dayButton.TabIndex = 20
+        Me.dayButton.UseVisualStyleBackColor = True
+        Me.dayButton.Visible = False
         '
         'dayEventTime2
         '
         Me.dayEventTime2.AutoSize = True
-        Me.dayEventTime2.Location = New System.Drawing.Point(6, 119)
+        Me.dayEventTime2.Location = New System.Drawing.Point(50, 119)
         Me.dayEventTime2.Name = "dayEventTime2"
         Me.dayEventTime2.Size = New System.Drawing.Size(34, 13)
         Me.dayEventTime2.TabIndex = 17
@@ -408,7 +543,7 @@ Partial Class KidWatch
         'dayEventName2
         '
         Me.dayEventName2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dayEventName2.Location = New System.Drawing.Point(6, 94)
+        Me.dayEventName2.Location = New System.Drawing.Point(50, 94)
         Me.dayEventName2.MaximumSize = New System.Drawing.Size(134, 25)
         Me.dayEventName2.Name = "dayEventName2"
         Me.dayEventName2.Size = New System.Drawing.Size(134, 25)
@@ -419,7 +554,7 @@ Partial Class KidWatch
         'dayEventTime1
         '
         Me.dayEventTime1.AutoSize = True
-        Me.dayEventTime1.Location = New System.Drawing.Point(6, 65)
+        Me.dayEventTime1.Location = New System.Drawing.Point(50, 65)
         Me.dayEventTime1.Name = "dayEventTime1"
         Me.dayEventTime1.Size = New System.Drawing.Size(34, 13)
         Me.dayEventTime1.TabIndex = 15
@@ -429,7 +564,7 @@ Partial Class KidWatch
         'dayEventName1
         '
         Me.dayEventName1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dayEventName1.Location = New System.Drawing.Point(6, 40)
+        Me.dayEventName1.Location = New System.Drawing.Point(50, 40)
         Me.dayEventName1.MaximumSize = New System.Drawing.Size(134, 25)
         Me.dayEventName1.Name = "dayEventName1"
         Me.dayEventName1.Size = New System.Drawing.Size(134, 25)
@@ -535,6 +670,17 @@ Partial Class KidWatch
         Me.day1Button.Text = "S 0"
         Me.day1Button.UseVisualStyleBackColor = False
         '
+        'weekButton
+        '
+        Me.weekButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.calendar_3_512
+        Me.weekButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.weekButton.Location = New System.Drawing.Point(100, -2)
+        Me.weekButton.Name = "weekButton"
+        Me.weekButton.Size = New System.Drawing.Size(40, 40)
+        Me.weekButton.TabIndex = 3
+        Me.weekButton.UseVisualStyleBackColor = True
+        Me.weekButton.Visible = False
+        '
         'PictureBox5
         '
         Me.PictureBox5.Image = Global.KidWatch.My.Resources.Resources.blue
@@ -619,12 +765,10 @@ Partial Class KidWatch
         '
         'PhoneBook
         '
-        Me.PhoneBook.Controls.Add(Me.PictureBox6)
         Me.PhoneBook.Controls.Add(Me.CallJesBtn)
         Me.PhoneBook.Controls.Add(Me.CallThomasBtn)
         Me.PhoneBook.Controls.Add(Me.CallDadBtn)
         Me.PhoneBook.Controls.Add(Me.CallMomBtn)
-        Me.PhoneBook.Controls.Add(Me.VScrollBar1)
         Me.PhoneBook.Location = New System.Drawing.Point(4, 22)
         Me.PhoneBook.Name = "PhoneBook"
         Me.PhoneBook.Padding = New System.Windows.Forms.Padding(3)
@@ -633,66 +777,52 @@ Partial Class KidWatch
         Me.PhoneBook.Text = "PhoneBook"
         Me.PhoneBook.UseVisualStyleBackColor = True
         '
-        'PictureBox6
-        '
-        Me.PictureBox6.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
-        Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox6.Location = New System.Drawing.Point(47, 0)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(40, 27)
-        Me.PictureBox6.TabIndex = 5
-        Me.PictureBox6.TabStop = False
-        '
         'CallJesBtn
         '
-        Me.CallJesBtn.Location = New System.Drawing.Point(0, 120)
+        Me.CallJesBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.Lisa_Simpson
+        Me.CallJesBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallJesBtn.Location = New System.Drawing.Point(79, 74)
         Me.CallJesBtn.Name = "CallJesBtn"
-        Me.CallJesBtn.Size = New System.Drawing.Size(125, 23)
+        Me.CallJesBtn.Size = New System.Drawing.Size(70, 70)
         Me.CallJesBtn.TabIndex = 4
-        Me.CallJesBtn.Text = "Jessica"
         Me.CallJesBtn.UseVisualStyleBackColor = True
         '
         'CallThomasBtn
         '
-        Me.CallThomasBtn.Location = New System.Drawing.Point(0, 91)
+        Me.CallThomasBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.BartSimpson13
+        Me.CallThomasBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallThomasBtn.Location = New System.Drawing.Point(0, 74)
         Me.CallThomasBtn.Name = "CallThomasBtn"
-        Me.CallThomasBtn.Size = New System.Drawing.Size(125, 23)
+        Me.CallThomasBtn.Size = New System.Drawing.Size(70, 70)
         Me.CallThomasBtn.TabIndex = 3
-        Me.CallThomasBtn.Text = "Thomas"
         Me.CallThomasBtn.UseVisualStyleBackColor = True
         '
         'CallDadBtn
         '
-        Me.CallDadBtn.Location = New System.Drawing.Point(0, 62)
+        Me.CallDadBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.homerpoint
+        Me.CallDadBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallDadBtn.Location = New System.Drawing.Point(79, 0)
         Me.CallDadBtn.Name = "CallDadBtn"
-        Me.CallDadBtn.Size = New System.Drawing.Size(125, 23)
+        Me.CallDadBtn.Size = New System.Drawing.Size(70, 70)
         Me.CallDadBtn.TabIndex = 2
-        Me.CallDadBtn.Text = "Dad"
         Me.CallDadBtn.UseVisualStyleBackColor = True
         '
         'CallMomBtn
         '
-        Me.CallMomBtn.Location = New System.Drawing.Point(0, 33)
+        Me.CallMomBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.marge
+        Me.CallMomBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallMomBtn.Location = New System.Drawing.Point(0, 1)
         Me.CallMomBtn.Name = "CallMomBtn"
-        Me.CallMomBtn.Size = New System.Drawing.Size(125, 23)
+        Me.CallMomBtn.Size = New System.Drawing.Size(70, 70)
         Me.CallMomBtn.TabIndex = 1
-        Me.CallMomBtn.Text = "Mom"
         Me.CallMomBtn.UseVisualStyleBackColor = True
-        '
-        'VScrollBar1
-        '
-        Me.VScrollBar1.Enabled = False
-        Me.VScrollBar1.Location = New System.Drawing.Point(128, 3)
-        Me.VScrollBar1.Name = "VScrollBar1"
-        Me.VScrollBar1.Size = New System.Drawing.Size(22, 151)
-        Me.VScrollBar1.TabIndex = 0
         '
         'CallPage
         '
+        Me.CallPage.Controls.Add(Me.CallerPicture)
         Me.CallPage.Controls.Add(Me.HangUpBtn)
         Me.CallPage.Controls.Add(Me.AcceptBtn)
-        Me.CallPage.Controls.Add(Me.CallTitle)
-        Me.CallPage.Controls.Add(Me.PictureBox7)
+        Me.CallPage.Controls.Add(Me.CallingPicture)
         Me.CallPage.Location = New System.Drawing.Point(4, 22)
         Me.CallPage.Name = "CallPage"
         Me.CallPage.Padding = New System.Windows.Forms.Padding(3)
@@ -701,49 +831,50 @@ Partial Class KidWatch
         Me.CallPage.Text = "CallPage"
         Me.CallPage.UseVisualStyleBackColor = True
         '
+        'CallerPicture
+        '
+        Me.CallerPicture.BackgroundImage = Global.KidWatch.My.Resources.Resources.marge
+        Me.CallerPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallerPicture.Location = New System.Drawing.Point(38, -1)
+        Me.CallerPicture.Name = "CallerPicture"
+        Me.CallerPicture.Size = New System.Drawing.Size(100, 100)
+        Me.CallerPicture.TabIndex = 4
+        Me.CallerPicture.TabStop = False
+        '
         'HangUpBtn
         '
+        Me.HangUpBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.no_phone_call
+        Me.HangUpBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.HangUpBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HangUpBtn.ForeColor = System.Drawing.Color.Red
-        Me.HangUpBtn.Location = New System.Drawing.Point(0, 125)
+        Me.HangUpBtn.Location = New System.Drawing.Point(78, 99)
         Me.HangUpBtn.Name = "HangUpBtn"
-        Me.HangUpBtn.Size = New System.Drawing.Size(147, 23)
+        Me.HangUpBtn.Size = New System.Drawing.Size(70, 50)
         Me.HangUpBtn.TabIndex = 3
-        Me.HangUpBtn.Text = "Hang Up"
         Me.HangUpBtn.UseVisualStyleBackColor = True
         '
         'AcceptBtn
         '
+        Me.AcceptBtn.BackgroundImage = Global.KidWatch.My.Resources.Resources.call_512
+        Me.AcceptBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.AcceptBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AcceptBtn.ForeColor = System.Drawing.Color.Green
-        Me.AcceptBtn.Location = New System.Drawing.Point(0, 99)
+        Me.AcceptBtn.Location = New System.Drawing.Point(5, 99)
         Me.AcceptBtn.Name = "AcceptBtn"
-        Me.AcceptBtn.Size = New System.Drawing.Size(147, 23)
+        Me.AcceptBtn.Size = New System.Drawing.Size(70, 50)
         Me.AcceptBtn.TabIndex = 2
-        Me.AcceptBtn.Text = "Accept"
         Me.AcceptBtn.UseVisualStyleBackColor = True
         Me.AcceptBtn.Visible = False
         '
-        'CallTitle
+        'CallingPicture
         '
-        Me.CallTitle.AutoSize = True
-        Me.CallTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CallTitle.Location = New System.Drawing.Point(8, 14)
-        Me.CallTitle.Name = "CallTitle"
-        Me.CallTitle.Size = New System.Drawing.Size(106, 20)
-        Me.CallTitle.TabIndex = 0
-        Me.CallTitle.Text = "Calling Mom"
-        Me.CallTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.BackgroundImage = Global.KidWatch.My.Resources.Resources.phone_icon
-        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox7.Location = New System.Drawing.Point(0, 37)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(153, 56)
-        Me.PictureBox7.TabIndex = 1
-        Me.PictureBox7.TabStop = False
+        Me.CallingPicture.BackgroundImage = Global.KidWatch.My.Resources.Resources.call_512
+        Me.CallingPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.CallingPicture.Location = New System.Drawing.Point(0, -1)
+        Me.CallingPicture.Name = "CallingPicture"
+        Me.CallingPicture.Size = New System.Drawing.Size(43, 44)
+        Me.CallingPicture.TabIndex = 1
+        Me.CallingPicture.TabStop = False
         '
         'Reminder
         '
@@ -803,6 +934,7 @@ Partial Class KidWatch
         '
         'Faces
         '
+        Me.Faces.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
         Me.Faces.Controls.Add(Me.Face4)
         Me.Faces.Controls.Add(Me.Face3)
         Me.Faces.Controls.Add(Me.Face2)
@@ -855,6 +987,61 @@ Partial Class KidWatch
         Me.Face1.TabIndex = 0
         Me.Face1.UseVisualStyleBackColor = True
         '
+        'SendMessage
+        '
+        Me.SendMessage.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
+        Me.SendMessage.Controls.Add(Me.TextMessageBox)
+        Me.SendMessage.Controls.Add(Me.VideoMessageBox)
+        Me.SendMessage.Controls.Add(Me.PictureMessageBox)
+        Me.SendMessage.Controls.Add(Me.VoiceMessageBox)
+        Me.SendMessage.Location = New System.Drawing.Point(4, 22)
+        Me.SendMessage.Name = "SendMessage"
+        Me.SendMessage.Padding = New System.Windows.Forms.Padding(3)
+        Me.SendMessage.Size = New System.Drawing.Size(153, 154)
+        Me.SendMessage.TabIndex = 10
+        Me.SendMessage.Text = "SendMsg"
+        Me.SendMessage.UseVisualStyleBackColor = True
+        '
+        'TextMessageBox
+        '
+        Me.TextMessageBox.BackgroundImage = Global.KidWatch.My.Resources.Resources.chat_4_512
+        Me.TextMessageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.TextMessageBox.Location = New System.Drawing.Point(8, 6)
+        Me.TextMessageBox.Name = "TextMessageBox"
+        Me.TextMessageBox.Size = New System.Drawing.Size(60, 60)
+        Me.TextMessageBox.TabIndex = 3
+        Me.TextMessageBox.TabStop = False
+        '
+        'VideoMessageBox
+        '
+        Me.VideoMessageBox.BackgroundImage = Global.KidWatch.My.Resources.Resources.video_call_512
+        Me.VideoMessageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.VideoMessageBox.Location = New System.Drawing.Point(85, 83)
+        Me.VideoMessageBox.Name = "VideoMessageBox"
+        Me.VideoMessageBox.Size = New System.Drawing.Size(60, 60)
+        Me.VideoMessageBox.TabIndex = 2
+        Me.VideoMessageBox.TabStop = False
+        '
+        'PictureMessageBox
+        '
+        Me.PictureMessageBox.BackgroundImage = Global.KidWatch.My.Resources.Resources.picture_512
+        Me.PictureMessageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureMessageBox.Location = New System.Drawing.Point(8, 83)
+        Me.PictureMessageBox.Name = "PictureMessageBox"
+        Me.PictureMessageBox.Size = New System.Drawing.Size(60, 60)
+        Me.PictureMessageBox.TabIndex = 1
+        Me.PictureMessageBox.TabStop = False
+        '
+        'VoiceMessageBox
+        '
+        Me.VoiceMessageBox.BackgroundImage = Global.KidWatch.My.Resources.Resources.walkie_talkie_radio_512
+        Me.VoiceMessageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.VoiceMessageBox.Location = New System.Drawing.Point(87, 6)
+        Me.VoiceMessageBox.Name = "VoiceMessageBox"
+        Me.VoiceMessageBox.Size = New System.Drawing.Size(60, 60)
+        Me.VoiceMessageBox.TabIndex = 0
+        Me.VoiceMessageBox.TabStop = False
+        '
         'HomeBtn
         '
         Me.HomeBtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -876,35 +1063,6 @@ Partial Class KidWatch
         Me.reminderTimer.Enabled = True
         Me.reminderTimer.Interval = 1000
         '
-        'calendarTitle
-        '
-        Me.calendarTitle.AutoSize = True
-        Me.calendarTitle.Location = New System.Drawing.Point(6, 13)
-        Me.calendarTitle.Name = "calendarTitle"
-        Me.calendarTitle.Size = New System.Drawing.Size(72, 13)
-        Me.calendarTitle.TabIndex = 2
-        Me.calendarTitle.Text = "Choose a day"
-        '
-        'weekButton
-        '
-        Me.weekButton.Location = New System.Drawing.Point(91, 9)
-        Me.weekButton.Name = "weekButton"
-        Me.weekButton.Size = New System.Drawing.Size(54, 23)
-        Me.weekButton.TabIndex = 3
-        Me.weekButton.Text = "Week"
-        Me.weekButton.UseVisualStyleBackColor = True
-        Me.weekButton.Visible = False
-        '
-        'dayButton
-        '
-        Me.dayButton.Location = New System.Drawing.Point(91, 9)
-        Me.dayButton.Name = "dayButton"
-        Me.dayButton.Size = New System.Drawing.Size(54, 23)
-        Me.dayButton.TabIndex = 20
-        Me.dayButton.Text = "Day"
-        Me.dayButton.UseVisualStyleBackColor = True
-        Me.dayButton.Visible = False
-        '
         'KidWatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -912,7 +1070,7 @@ Partial Class KidWatch
         Me.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(167, 178)
+        Me.ClientSize = New System.Drawing.Size(173, 186)
         Me.Controls.Add(Me.HomeBtn)
         Me.Controls.Add(Me.MainTabControl)
         Me.DoubleBuffered = True
@@ -928,6 +1086,15 @@ Partial Class KidWatch
         Me.Clock.PerformLayout()
         Me.Calendar.ResumeLayout(False)
         Me.Calendar.PerformLayout()
+        CType(Me.WeekdaySelect7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeekdaySelect1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EventPicture2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EventPicture1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Disrupt.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -936,12 +1103,16 @@ Partial Class KidWatch
         CType(Me.PlaylistIcon2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PlaylistIcon1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PhoneBook.ResumeLayout(False)
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CallPage.ResumeLayout(False)
-        Me.CallPage.PerformLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CallerPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CallingPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Reminder.ResumeLayout(False)
         Me.Faces.ResumeLayout(False)
+        Me.SendMessage.ResumeLayout(False)
+        CType(Me.TextMessageBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VideoMessageBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureMessageBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VoiceMessageBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -981,19 +1152,15 @@ Partial Class KidWatch
     Friend WithEvents dayEventName2 As System.Windows.Forms.Label
     Friend WithEvents dayEventTime1 As System.Windows.Forms.Label
     Friend WithEvents dayEventName1 As System.Windows.Forms.Label
-    Friend WithEvents eventName As System.Windows.Forms.Label
-    Friend WithEvents eventTime As System.Windows.Forms.Label
     Friend WithEvents PhoneBook As System.Windows.Forms.TabPage
     Friend WithEvents CallDadBtn As System.Windows.Forms.Button
     Friend WithEvents CallMomBtn As System.Windows.Forms.Button
-    Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
     Friend WithEvents CallJesBtn As System.Windows.Forms.Button
     Friend WithEvents CallThomasBtn As System.Windows.Forms.Button
     Friend WithEvents CallPage As System.Windows.Forms.TabPage
     Friend WithEvents HangUpBtn As System.Windows.Forms.Button
     Friend WithEvents AcceptBtn As System.Windows.Forms.Button
-    Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
-    Friend WithEvents CallTitle As System.Windows.Forms.Label
+    Friend WithEvents CallingPicture As System.Windows.Forms.PictureBox
     Friend WithEvents ClockButton As System.Windows.Forms.Button
     Friend WithEvents reminderTimer As System.Windows.Forms.Timer
     Friend WithEvents Reminder As System.Windows.Forms.TabPage
@@ -1002,7 +1169,6 @@ Partial Class KidWatch
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents HomeBtn As System.Windows.Forms.Button
-    Friend WithEvents VScrollBar1 As System.Windows.Forms.VScrollBar
     Friend WithEvents ChangeFace As System.Windows.Forms.Button
     Friend WithEvents PlaylistIcon1 As System.Windows.Forms.PictureBox
     Friend WithEvents Playlist2 As System.Windows.Forms.Label
@@ -1016,6 +1182,22 @@ Partial Class KidWatch
     Friend WithEvents PlaylistIcon2 As System.Windows.Forms.PictureBox
     Friend WithEvents dayButton As System.Windows.Forms.Button
     Friend WithEvents weekButton As System.Windows.Forms.Button
-    Friend WithEvents calendarTitle As System.Windows.Forms.Label
+    Friend WithEvents EventPicture2 As System.Windows.Forms.PictureBox
+    Friend WithEvents EventPicture1 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect1 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect7 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect6 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect5 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect4 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect3 As System.Windows.Forms.PictureBox
+    Friend WithEvents WeekdaySelect2 As System.Windows.Forms.PictureBox
+    Friend WithEvents CallerPicture As System.Windows.Forms.PictureBox
+    Friend WithEvents SendMessage As System.Windows.Forms.TabPage
+    Friend WithEvents TextMessageBox As System.Windows.Forms.PictureBox
+    Friend WithEvents VideoMessageBox As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureMessageBox As System.Windows.Forms.PictureBox
+    Friend WithEvents VoiceMessageBox As System.Windows.Forms.PictureBox
+    Friend WithEvents SendMessageButton As System.Windows.Forms.Button
+    Friend WithEvents MessagesButton As System.Windows.Forms.Button
 
 End Class
