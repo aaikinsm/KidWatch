@@ -163,12 +163,6 @@
     <None Include="Resources\previous-512.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\repeat-512-green.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\shuffle-512-green.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\activity-feed-512.png" />
   </ItemGroup>
   <ItemGroup>
@@ -353,6 +347,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Spam.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-11-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-mark-7-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-mark-4-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check-mark-7-512-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-6-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-6-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speaker-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\speaker-512-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\repeat-512-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shuffle-512-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cards-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\microphone-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chat-4-512-red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

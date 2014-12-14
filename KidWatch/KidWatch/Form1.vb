@@ -21,9 +21,6 @@ Public Class KidWatch
     '    configuration (1 each) 
     'Children Watch
     '    • Leave message (1), automatic redial (2)
-    '    • Send voice(1), video(2) or picture (2) message
-    '    • Receive message(1) and listen to/view it (2)
-    '    • Review messages (1) and keep(1) or discard them (1)
     '    • Make watch non-disruptive/normal(1), non-disruptive options(1)
     'Parent's U.I.
 
@@ -52,27 +49,36 @@ Public Class KidWatch
     Dim pastTabPage
     'Dim weekdayPictures() As PictureBox = Control.Find()
 
+    'Varibales for phone and messsging
+    Dim calling As Boolean = False
+    Dim messageReady As Boolean
+    Dim messageSenderName As String
+    Dim sentConfirmationCounter As Integer = 0
+    Dim messageNumber As Integer
+    Dim msg1 As Boolean = True
+    Dim msg2 As Boolean = True
+
     'Main menu scroll
-    Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown, MessagesButton.MouseDown, SendMessageButton.MouseDown
+    Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown, MessagesButton.MouseDown, ContactsButton.MouseDown
         clicked = True
         YOfsetCalendar = Cursor.Position.Y - CalendarButton.Location.Y
         YOfsetMusic = Cursor.Position.Y - MusicButton.Location.Y
         YOfsetCall = Cursor.Position.Y - callButton.Location.Y
         YOfsetClock = Cursor.Position.Y - ClockButton.Location.Y
         YOfsetMessages = Cursor.Position.Y - MessagesButton.Location.Y
-        YOfsetSend = Cursor.Position.Y - SendMessageButton.Location.Y
+        YOfsetSend = Cursor.Position.Y - ContactsButton.Location.Y
     End Sub
-    Private Sub Menu_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseMove, MusicButton.MouseMove, callButton.MouseMove, WatchBgImg.MouseMove
+    Private Sub Menu_MouseMove(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseMove, MusicButton.MouseMove, callButton.MouseMove, WatchBgImg.MouseMove, MessagesButton.MouseMove, ContactsButton.MouseMove
         If (clicked) Then
             CalendarButton.Location = New Drawing.Point(CalendarButton.Location.X, (Cursor.Position.Y - YOfsetCalendar))
             MusicButton.Location = New Drawing.Point(MusicButton.Location.X, (Cursor.Position.Y - YOfsetMusic))
             callButton.Location = New Drawing.Point(callButton.Location.X, (Cursor.Position.Y - YOfsetCall))
             ClockButton.Location = New Drawing.Point(ClockButton.Location.X, (Cursor.Position.Y - YOfsetClock))
-            SendMessageButton.Location = New Drawing.Point(SendMessageButton.Location.X, (Cursor.Position.Y - YOfsetSend))
+            ContactsButton.Location = New Drawing.Point(ContactsButton.Location.X, (Cursor.Position.Y - YOfsetSend))
             MessagesButton.Location = New Drawing.Point(MessagesButton.Location.X, (Cursor.Position.Y - YOfsetMessages))
         End If
     End Sub
-    Private Sub Menu_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseUp, MusicButton.MouseUp, callButton.MouseUp, WatchBgImg.MouseUp
+    Private Sub Menu_MouseUp(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseUp, MusicButton.MouseUp, callButton.MouseUp, WatchBgImg.MouseUp, MessagesButton.MouseUp, ContactsButton.MouseUp
         clicked = False
     End Sub
     'At Launch set dynamic paramters
@@ -86,17 +92,35 @@ Public Class KidWatch
         Me.Size = New Size(watchwidth, watchHeight)
         Me.MaximumSize = New Size(watchwidth, watchHeight)
         HomeBtn.Location = New Point(watchwidth - 40, 10)
+        NewMessageButton.Location = New Point(0, 0)
         Set_Date()
     End Sub
-    'Sample tab switching
+    'Simple tab switching
     Private Sub MusicButton_Click(sender As Object, e As EventArgs) Handles MusicButton.Click
         MainTabControl.SelectedTab = Music
     End Sub
     Private Sub CalendarButton_Click(sender As Object, e As EventArgs) Handles CalendarButton.Click
         MainTabControl.SelectedTab = Calendar
+        Dim dayName As String = DateTime.Today.ToString("ddd")
+        If dayName = "Sat" Then
+            day1Button.PerformClick()
+        ElseIf dayName = "Mon" Then
+            day2Button.PerformClick()
+        ElseIf dayName = "Tue" Then
+            day3Button.PerformClick()
+        ElseIf dayName = "Wed" Then
+            day4Button.PerformClick()
+        ElseIf dayName = "Thu" Then
+            day5Button.PerformClick()
+        ElseIf dayName = "Fri" Then
+            day6Button.PerformClick()
+        ElseIf dayName = "Sun" Then
+            day7Button.PerformClick()
+        End If
     End Sub
     Private Sub callButton_MouseClick(sender As Object, e As MouseEventArgs) Handles callButton.MouseClick
         MainTabControl.SelectedTab = PhoneBook
+        calling = True
     End Sub
     Private Sub ClockPage_Click(sender As Object, e As EventArgs) Handles ClockTime.MouseClick
         MainTabControl.SelectedTab = Main
@@ -107,17 +131,28 @@ Public Class KidWatch
     Private Sub HomeBtn_Click(sender As Object, e As EventArgs) Handles HomeBtn.Click
         MainTabControl.SelectedTab = Main
     End Sub
-    Private Sub MessageButton_Click(sender As Object, e As EventArgs) Handles SendMessageButton.Click
-        MainTabControl.SelectedTab = SendMessage
+    Private Sub ContactsButton_Click(sender As Object, e As EventArgs) Handles ContactsButton.Click
+        MainTabControl.SelectedTab = PhoneBook
+        calling = False
+    End Sub
+    Private Sub MessagesButton_Click(sender As Object, e As EventArgs) Handles MessagesButton.Click
+        MainTabControl.SelectedTab = MessageCentre
     End Sub
 
     Private Sub ReminderTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles reminderTimer.Tick
         reminderCounter += 1
         'Console.WriteLine(reminderCounter)
-        If reminderCounter >= 10 Then
+        If reminderCounter = 10 Then
             ' pop up a reminder
             pastTabPage = MainTabControl.SelectedTab
             MainTabControl.SelectedTab = Reminder
+        End If
+        If reminderCounter = 20 Then
+            NewMessageButton.Visible = True
+            NewMessage()
+        End If
+        If reminderCounter >= 23 Then
+            NewMessageButton.Visible = False
             reminderTimer.Stop()
         End If
     End Sub
@@ -129,8 +164,11 @@ Public Class KidWatch
     End Sub
     'Sets the current date
     Private Sub Set_Date()
+        Dim yesterday As DateTime = DateTime.Today.AddDays(-1)
         'ClockDate.Text = DateTime.Today.ToString("dddd") + " " + DateTime.Today.ToString("MMM") + "." + DateTime.Today.ToString("dd")
         ClockDate.Text = DateTime.Today.ToString("yyyy") + "-" + DateTime.Today.ToString("MM") + "-" + DateTime.Today.ToString("dd")
+        MessageDate1.Text = ClockDate.Text
+        MessageDate2.Text = yesterday.ToString("yyyy") + "-" + yesterday.ToString("MM") + "-" + yesterday.ToString("dd")
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ChangeFace.Click
         MainTabControl.SelectedTab = Faces
@@ -398,23 +436,27 @@ Public Class KidWatch
 
     '###### Phone and Messaging ######
     Private Sub CallBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles CallMomBtn.MouseClick, CallDadBtn.MouseClick, CallThomasBtn.MouseClick, CallJesBtn.MouseClick
-        MainTabControl.SelectedTab = CallPage
-        AcceptBtn.Hide()
-        SetCallerPicture(sender.Name)
-        'HangUpBtn.Text = "Cancel Call"
-        If sender.Name = "CallMomBtn" Then
-            'CallTitle.Text = "Calling Mom"
-            ParentUI.TabControl.SelectedTab = ParentUI.ParentCallPage
-            ParentUI.ParentCallTitle.Text = "Jimmy"
-        ElseIf sender.Name = "CallDadBtn" Then
-            'CallTitle.Text = "Calling Dad"
-        ElseIf sender.Name = "CallThomasBtn" Then
-            'CallTitle.Text = "Calling Thomas"
-        ElseIf sender.Name = "CallJesBtn" Then
-            'CallTitle.Text = "Calling Jessica"
+        SetContactPicture(sender.Name)
+        If calling Then
+            MainTabControl.SelectedTab = CallPage
+            AcceptBtn.Hide()
+            'HangUpBtn.Text = "Cancel Call"
+            If sender.Name = "CallMomBtn" Then
+                'CallTitle.Text = "Calling Mom"
+                ParentUI.TabControl.SelectedTab = ParentUI.ParentCallPage
+                ParentUI.ParentCallTitle.Text = "Jimmy"
+                'ElseIf sender.Name = "CallDadBtn" Then
+                '    'CallTitle.Text = "Calling Dad"
+                'ElseIf sender.Name = "CallThomasBtn" Then
+                '    'CallTitle.Text = "Calling Thomas"
+                'ElseIf sender.Name = "CallJesBtn" Then
+                '    'CallTitle.Text = "Calling Jessica"
+            End If
+        Else
+            MainTabControl.SelectedTab = SendMessage
         End If
     End Sub
-    Private Sub SetCallerPicture(name As String)
+    Private Sub SetContactPicture(name As String)
         If name = "CallMomBtn" Then
             CallerPicture.BackgroundImage = My.Resources.marge
         ElseIf name = "CallDadBtn" Then
@@ -424,18 +466,16 @@ Public Class KidWatch
         ElseIf name = "CallJesBtn" Then
             CallerPicture.BackgroundImage = My.Resources.Lisa_Simpson
         End If
+        SendingToPicture.BackgroundImage = CallerPicture.BackgroundImage
     End Sub
     Private Sub HangUpBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles HangUpBtn.MouseClick
         MainTabControl.SelectedTab = Main
         ParentUI.TabControl.SelectedTab = ParentUI.TrackChild
     End Sub
 
-
-
     Public Sub IncomingCall(callerName As String)
         MainTabControl.SelectedTab = CallPage
-        'CallTitle.Text = callerName
-        SetCallerPicture(callerName)
+        SetContactPicture(callerName)
         AcceptBtn.Show()
         HangUpBtn.Text = "Hang Up"
     End Sub
@@ -445,9 +485,166 @@ Public Class KidWatch
         ParentUI.ParentHangUp.Text = "Hang Up"
     End Sub
 
+    Private Sub MessagePictureBox_Click(sender As Object, e As EventArgs) Handles TextMessageBox.Click, VoiceMessageBox.Click, PictureMessageBox.Click, VideoMessageBox.Click
+        SendingTypePicture.BackgroundImage = sender.BackgroundImage
+        messageReady = False
+        HelloButton.BackColor = Color.Transparent
+        HelloButton.Visible = False
+        SendExistingPicture.Visible = True
+        SendExistingPicture.BorderStyle = BorderStyle.None
+        ConfirmPicture.BackgroundImage = My.Resources.check_mark_7_512_gray
+        messageSenderName = sender.name
+        If messageSenderName = "TextMessageBox" Then
+            HelloButton.Visible = True
+            SendExistingPicture.Visible = False
+        ElseIf messageSenderName = "VoiceMessageBox" Then
+            SendExistingPicture.BackgroundImage = My.Resources.speaker_512_blue
+        ElseIf messageSenderName = "PictureMessageBox" Then
+            SendExistingPicture.BackgroundImage = My.Resources.ladybug_large
+        ElseIf messageSenderName = "VideoMessageBox" Then
+            SendExistingPicture.BackgroundImage = My.Resources.fox
+        End If
+        MainTabControl.SelectedTab = Sending
+    End Sub
+    Private Sub HelloButton_Click(sender As Object, e As EventArgs) Handles HelloButton.Click
+        HelloButton.BackColor = Color.LightGreen
+        ToggleSend()
+    End Sub
+
+    Private Sub SendExistingPicture_Click(sender As Object, e As EventArgs) Handles SendExistingPicture.Click
+        SendExistingPicture.BorderStyle = BorderStyle.FixedSingle
+        ToggleSend()
+        If messageSenderName = "VoiceMessageBox" Then
+            If playing Then
+                StopMusic()
+                My.Computer.Audio.Play(My.Resources.Blue1, _
+                               AudioPlayMode.WaitToComplete)
+                PlayMusic()
+            Else
+                My.Computer.Audio.Play(My.Resources.Blue1, _
+                               AudioPlayMode.WaitToComplete)
+            End If
+        End If
+    End Sub
+    Private Sub ToggleSend()
+        ConfirmPicture.BackgroundImage = My.Resources.check_mark_7_512
+        messageReady = True
+    End Sub
+    Private Sub CancelPicture_Click(sender As Object, e As EventArgs) Handles CancelPicture.Click
+        MainTabControl.SelectedTab = SendMessage
+    End Sub
+    Private Sub ConfirmPicture_Click(sender As Object, e As EventArgs) Handles ConfirmPicture.Click
+        If messageReady Then
+            SentPicture.Visible = True
+            sentConfirmationCounter = 0
+            SentTimer.Start()
+        End If
+    End Sub
+    Private Sub SentTimer_Tick(sender As Object, e As EventArgs) Handles SentTimer.Tick
+        sentConfirmationCounter += 1
+        If sentConfirmationCounter = 10 Then
+            SentTimer.Stop()
+            SentPicture.Visible = False
+            MainTabControl.SelectedTab = Main
+        End If
+    End Sub
+
+    'Reminder and Notifications 
     Private Sub dismissReminder_Click(sender As Object, e As EventArgs) Handles dismissReminder.Click
         MainTabControl.SelectedTab = pastTabPage
     End Sub
 
 
+    Private Sub Message1_Click(sender As Object, e As EventArgs) Handles MsgSenderPicture1.Click, MsgPreviewPicture1.Click
+        PreviewPicture.BackgroundImage = MsgPreviewPicture1.BackgroundImage
+        PreviewPicture.Tag = MsgPreviewPicture1.Tag
+        MessageTime1.Font = New Drawing.Font("Microsoft Sans Serif", 8.25, FontStyle.Regular)
+        MessageTime1.ForeColor = Color.Black
+        MainTabControl.SelectedTab = ViewMessage
+        MessagesButton.BackgroundImage = My.Resources.read_message_512
+        ViewingMessage(1)
+    End Sub
+    Private Sub Message2_Click(sender As Object, e As EventArgs) Handles MsgSenderPicture2.Click, MsgPreviewPicture2.Click
+        PreviewPicture.BackgroundImage = MsgPreviewPicture2.BackgroundImage
+        PreviewPicture.Tag = MsgPreviewPicture2.Tag
+        MessageTime2.Font = New Drawing.Font("Microsoft Sans Serif", 8.25, FontStyle.Regular)
+        MessageTime2.ForeColor = Color.Black
+        MainTabControl.SelectedTab = ViewMessage
+        ViewingMessage(2)
+    End Sub
+    Private Sub ViewingMessage(ByVal message As Integer)
+        messageNumber = message
+        If PreviewPicture.Tag = "Voice" Then
+            If playing Then
+                StopMusic()
+            End If
+            My.Computer.Audio.Play(My.Resources.Spam, AudioPlayMode.Background)
+        End If
+    End Sub
+
+    Private Sub KeepMessagePicture_Click(sender As Object, e As EventArgs) Handles KeepMessagePicture.Click
+        MainTabControl.SelectedTab = MessageCentre
+    End Sub
+
+    Private Sub DeleteMessagePicture_Click(sender As Object, e As EventArgs) Handles DeleteMessagePicture.Click
+        If messageNumber = 1 Then
+            MessageDate1.Text = MessageDate2.Text
+            MessageTime1.Text = MessageTime2.Text
+            MsgSenderPicture1.BackgroundImage = MsgSenderPicture2.BackgroundImage
+            MsgPreviewPicture1.BackgroundImage = MsgPreviewPicture2.BackgroundImage
+            MsgPreviewPicture1.Tag = MsgPreviewPicture2.Tag
+            If Not msg2 Then
+                MessageDate1.Visible = False
+                MessageTime1.Visible = False
+                MsgSenderPicture1.Visible = False
+                MsgPreviewPicture1.Visible = False
+                msg1 = False
+            End If
+        End If
+        MessageDate2.Visible = False
+        MessageTime2.Visible = False
+        MsgSenderPicture2.Visible = False
+        MsgPreviewPicture2.Visible = False
+        msg2 = False
+        MainTabControl.SelectedTab = MessageCentre
+    End Sub
+    Private Sub NewMessage()
+        MessagesButton.BackgroundImage = My.Resources.message_outline_512
+
+        MessageDate2.Text = MessageDate1.Text
+        MessageTime2.Text = MessageTime1.Text
+        MsgSenderPicture2.BackgroundImage = MsgSenderPicture1.BackgroundImage
+        MsgPreviewPicture2.BackgroundImage = MsgPreviewPicture1.BackgroundImage
+        MsgPreviewPicture2.Tag = MsgPreviewPicture1.Tag
+        If msg2 Then
+            MessageDate2.Visible = False
+        End If
+        If msg1 Then
+            MessageTime2.Visible = True
+            MsgSenderPicture2.Visible = True
+            MsgPreviewPicture2.Visible = True
+        End If
+        MessageDate1.Text = DateTime.Today.ToString("yyyy") + "-" + DateTime.Today.ToString("MM") + "-" + DateTime.Today.ToString("dd")
+        MessageTime1.Text = Format(My.Computer.Clock.LocalTime, "hh:mm")
+        MessageTime1.Font = New Drawing.Font("Microsoft Sans Serif", 8.25, FontStyle.Bold)
+        MessageTime1.ForeColor = Color.Red
+        MsgSenderPicture1.BackgroundImage = My.Resources.homerpoint
+        MsgPreviewPicture1.BackgroundImage = My.Resources.cat
+        MsgPreviewPicture1.Tag = "New"
+        If playing Then
+            StopMusic()
+            My.Computer.Audio.Play(My.Resources.message, _
+                           AudioPlayMode.WaitToComplete)
+            PlayMusic()
+        Else
+            My.Computer.Audio.Play(My.Resources.message, _
+                           AudioPlayMode.WaitToComplete)
+        End If
+    End Sub
+
+
+    Private Sub NewMessageButton_Click(sender As Object, e As EventArgs) Handles NewMessageButton.Click
+        NewMessageButton.Visible = False
+        Message1_Click(Nothing, Nothing)
+    End Sub
 End Class
