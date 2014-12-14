@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization
+Imports System.Runtime.InteropServices
 
 Public Class KidWatch
 
@@ -20,8 +21,7 @@ Public Class KidWatch
     '    Screen layouts include access to future features: playlists management, 
     '    configuration (1 each) 
     'Children Watch
-    '    • Leave message (1), automatic redial (2)
-    '    • Make watch non-disruptive/normal(1), non-disruptive options(1)
+    '    • non-disruptive options(1)
     'Parent's U.I.
 
 
@@ -57,6 +57,9 @@ Public Class KidWatch
     Dim messageNumber As Integer
     Dim msg1 As Boolean = True
     Dim msg2 As Boolean = True
+
+    'Variables for non-distrupt mode
+    Dim muted As Boolean = False
 
     'Main menu scroll
     Private Sub Menu_MouseDown(sender As Object, e As System.Windows.Forms.MouseEventArgs) Handles CalendarButton.MouseDown, MusicButton.MouseDown, callButton.MouseDown, WatchBgImg.MouseDown, MessagesButton.MouseDown, ContactsButton.MouseDown
@@ -439,6 +442,7 @@ Public Class KidWatch
         SetContactPicture(sender.Name)
         If calling Then
             MainTabControl.SelectedTab = CallPage
+            CallTimer.Start()
             AcceptBtn.Hide()
             'HangUpBtn.Text = "Cancel Call"
             If sender.Name = "CallMomBtn" Then
@@ -467,24 +471,22 @@ Public Class KidWatch
             CallerPicture.BackgroundImage = My.Resources.Lisa_Simpson
         End If
         SendingToPicture.BackgroundImage = CallerPicture.BackgroundImage
+        FailedCallerPicture.BackgroundImage = CallerPicture.BackgroundImage
     End Sub
     Private Sub HangUpBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles HangUpBtn.MouseClick
         MainTabControl.SelectedTab = Main
         ParentUI.TabControl.SelectedTab = ParentUI.TrackChild
     End Sub
-
     Public Sub IncomingCall(callerName As String)
         MainTabControl.SelectedTab = CallPage
         SetContactPicture(callerName)
         AcceptBtn.Show()
         HangUpBtn.Text = "Hang Up"
     End Sub
-
     Private Sub AcceptBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles AcceptBtn.MouseClick
         AcceptBtn.Hide()
         ParentUI.ParentHangUp.Text = "Hang Up"
     End Sub
-
     Private Sub MessagePictureBox_Click(sender As Object, e As EventArgs) Handles TextMessageBox.Click, VoiceMessageBox.Click, PictureMessageBox.Click, VideoMessageBox.Click
         SendingTypePicture.BackgroundImage = sender.BackgroundImage
         messageReady = False
@@ -510,7 +512,6 @@ Public Class KidWatch
         HelloButton.BackColor = Color.LightGreen
         ToggleSend()
     End Sub
-
     Private Sub SendExistingPicture_Click(sender As Object, e As EventArgs) Handles SendExistingPicture.Click
         SendExistingPicture.BorderStyle = BorderStyle.FixedSingle
         ToggleSend()
@@ -548,13 +549,6 @@ Public Class KidWatch
             MainTabControl.SelectedTab = Main
         End If
     End Sub
-
-    'Reminder and Notifications 
-    Private Sub dismissReminder_Click(sender As Object, e As EventArgs) Handles dismissReminder.Click
-        MainTabControl.SelectedTab = pastTabPage
-    End Sub
-
-
     Private Sub Message1_Click(sender As Object, e As EventArgs) Handles MsgSenderPicture1.Click, MsgPreviewPicture1.Click
         PreviewPicture.BackgroundImage = MsgPreviewPicture1.BackgroundImage
         PreviewPicture.Tag = MsgPreviewPicture1.Tag
@@ -581,11 +575,9 @@ Public Class KidWatch
             My.Computer.Audio.Play(My.Resources.Spam, AudioPlayMode.Background)
         End If
     End Sub
-
     Private Sub KeepMessagePicture_Click(sender As Object, e As EventArgs) Handles KeepMessagePicture.Click
         MainTabControl.SelectedTab = MessageCentre
     End Sub
-
     Private Sub DeleteMessagePicture_Click(sender As Object, e As EventArgs) Handles DeleteMessagePicture.Click
         If messageNumber = 1 Then
             MessageDate1.Text = MessageDate2.Text
@@ -641,10 +633,51 @@ Public Class KidWatch
                            AudioPlayMode.WaitToComplete)
         End If
     End Sub
-
-
     Private Sub NewMessageButton_Click(sender As Object, e As EventArgs) Handles NewMessageButton.Click
         NewMessageButton.Visible = False
         Message1_Click(Nothing, Nothing)
+    End Sub
+    'Reminder and Notifications 
+    Private Sub dismissReminder_Click(sender As Object, e As EventArgs) Handles dismissReminder.Click
+        MainTabControl.SelectedTab = pastTabPage
+    End Sub
+
+    'Non-Distruptive
+    Private Const APPCOMMAND_VOLUME_MUTE As Integer = &H80000
+    Private Const WM_APPCOMMAND As Integer = &H319
+    Declare Function SendMessageW Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
+
+    Private Sub DisruptiveToggleButton_Click(sender As Object, e As EventArgs) Handles DisruptiveToggleButton.Click
+        SendMessageW(Me.Handle, WM_APPCOMMAND, Me.Handle, CType(APPCOMMAND_VOLUME_MUTE, IntPtr))
+        muted = Not muted
+        If muted Then
+            DisruptiveToggleButton.BackgroundImage = My.Resources.mute_2_512
+        Else
+            DisruptiveToggleButton.BackgroundImage = My.Resources.speaker_512_black
+        End If
+    End Sub
+
+
+    Private Sub CallTimer_Tick(sender As Object, e As EventArgs) Handles CallTimer.Tick
+        MainTabControl.SelectedTab = FailedCall
+        CallTimer.Stop()
+    End Sub
+
+    Private Sub RedialButton_Click(sender As Object, e As EventArgs) Handles RedialButton.Click
+        MainTabControl.SelectedTab = CallPage
+        CallTimer.Start()
+    End Sub
+
+    Private Sub VoiceMailButton_Click(sender As Object, e As EventArgs) Handles VoiceMailButton.Click
+        SendingTypePicture.BackgroundImage = My.Resources.microphone_512_black
+        messageReady = False
+        HelloButton.BackColor = Color.Transparent
+        HelloButton.Visible = False
+        SendExistingPicture.Visible = True
+        SendExistingPicture.BorderStyle = BorderStyle.None
+        ConfirmPicture.BackgroundImage = My.Resources.check_mark_7_512_gray
+        SendExistingPicture.BackgroundImage = My.Resources.speaker_512_blue
+        messageSenderName = "VoiceMessageBox"
+        MainTabControl.SelectedTab = Sending
     End Sub
 End Class

@@ -110,6 +110,7 @@ Partial Class KidWatch
         Me.weekButton = New System.Windows.Forms.Button()
         Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Clock = New System.Windows.Forms.TabPage()
+        Me.DisruptiveToggleButton = New System.Windows.Forms.Button()
         Me.ChangeFace = New System.Windows.Forms.Button()
         Me.ClockDate = New System.Windows.Forms.Label()
         Me.ClockTime = New System.Windows.Forms.Label()
@@ -131,6 +132,12 @@ Partial Class KidWatch
         Me.MusicButton = New System.Windows.Forms.Button()
         Me.WatchBgImg = New System.Windows.Forms.PictureBox()
         Me.MainTabControl = New System.Windows.Forms.TabControl()
+        Me.FailedCall = New System.Windows.Forms.TabPage()
+        Me.FailedCallerPicture = New System.Windows.Forms.PictureBox()
+        Me.VoiceMailButton = New System.Windows.Forms.Button()
+        Me.RedialButton = New System.Windows.Forms.Button()
+        Me.FailedCallPicture = New System.Windows.Forms.PictureBox()
+        Me.CallTimer = New System.Windows.Forms.Timer(Me.components)
         Me.ViewMessage.SuspendLayout()
         CType(Me.DeleteMessagePicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KeepMessagePicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,6 +188,9 @@ Partial Class KidWatch
         Me.Main.SuspendLayout()
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MainTabControl.SuspendLayout()
+        Me.FailedCall.SuspendLayout()
+        CType(Me.FailedCallerPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FailedCallPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'HomeBtn
@@ -648,7 +658,7 @@ Partial Class KidWatch
         '
         Me.CallerPicture.BackgroundImage = Global.KidWatch.My.Resources.Resources.marge
         Me.CallerPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.CallerPicture.Location = New System.Drawing.Point(38, -1)
+        Me.CallerPicture.Location = New System.Drawing.Point(43, -1)
         Me.CallerPicture.Name = "CallerPicture"
         Me.CallerPicture.Size = New System.Drawing.Size(100, 100)
         Me.CallerPicture.TabIndex = 4
@@ -1117,6 +1127,7 @@ Partial Class KidWatch
         '
         Me.Clock.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
         Me.Clock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Clock.Controls.Add(Me.DisruptiveToggleButton)
         Me.Clock.Controls.Add(Me.ChangeFace)
         Me.Clock.Controls.Add(Me.ClockDate)
         Me.Clock.Controls.Add(Me.ClockTime)
@@ -1127,6 +1138,16 @@ Partial Class KidWatch
         Me.Clock.TabIndex = 2
         Me.Clock.Text = "Clock"
         Me.Clock.UseVisualStyleBackColor = True
+        '
+        'DisruptiveToggleButton
+        '
+        Me.DisruptiveToggleButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.speaker_512_black
+        Me.DisruptiveToggleButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.DisruptiveToggleButton.Location = New System.Drawing.Point(10, 105)
+        Me.DisruptiveToggleButton.Name = "DisruptiveToggleButton"
+        Me.DisruptiveToggleButton.Size = New System.Drawing.Size(35, 35)
+        Me.DisruptiveToggleButton.TabIndex = 4
+        Me.DisruptiveToggleButton.UseVisualStyleBackColor = True
         '
         'ChangeFace
         '
@@ -1363,11 +1384,75 @@ Partial Class KidWatch
         Me.MainTabControl.Controls.Add(Me.Sending)
         Me.MainTabControl.Controls.Add(Me.MessageCentre)
         Me.MainTabControl.Controls.Add(Me.ViewMessage)
+        Me.MainTabControl.Controls.Add(Me.FailedCall)
         Me.MainTabControl.Location = New System.Drawing.Point(-1, 1)
         Me.MainTabControl.Name = "MainTabControl"
         Me.MainTabControl.SelectedIndex = 0
         Me.MainTabControl.Size = New System.Drawing.Size(161, 180)
         Me.MainTabControl.TabIndex = 2
+        '
+        'FailedCall
+        '
+        Me.FailedCall.BackgroundImage = Global.KidWatch.My.Resources.Resources.blue
+        Me.FailedCall.Controls.Add(Me.FailedCallerPicture)
+        Me.FailedCall.Controls.Add(Me.VoiceMailButton)
+        Me.FailedCall.Controls.Add(Me.RedialButton)
+        Me.FailedCall.Controls.Add(Me.FailedCallPicture)
+        Me.FailedCall.Location = New System.Drawing.Point(4, 22)
+        Me.FailedCall.Name = "FailedCall"
+        Me.FailedCall.Padding = New System.Windows.Forms.Padding(3)
+        Me.FailedCall.Size = New System.Drawing.Size(153, 154)
+        Me.FailedCall.TabIndex = 14
+        Me.FailedCall.Text = "FailedCall"
+        Me.FailedCall.UseVisualStyleBackColor = True
+        '
+        'FailedCallerPicture
+        '
+        Me.FailedCallerPicture.BackgroundImage = Global.KidWatch.My.Resources.Resources.marge
+        Me.FailedCallerPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.FailedCallerPicture.Location = New System.Drawing.Point(46, 2)
+        Me.FailedCallerPicture.Name = "FailedCallerPicture"
+        Me.FailedCallerPicture.Size = New System.Drawing.Size(100, 100)
+        Me.FailedCallerPicture.TabIndex = 8
+        Me.FailedCallerPicture.TabStop = False
+        '
+        'VoiceMailButton
+        '
+        Me.VoiceMailButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.microphone_512_black
+        Me.VoiceMailButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.VoiceMailButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.VoiceMailButton.ForeColor = System.Drawing.Color.Red
+        Me.VoiceMailButton.Location = New System.Drawing.Point(80, 102)
+        Me.VoiceMailButton.Name = "VoiceMailButton"
+        Me.VoiceMailButton.Size = New System.Drawing.Size(70, 50)
+        Me.VoiceMailButton.TabIndex = 7
+        Me.VoiceMailButton.UseVisualStyleBackColor = True
+        '
+        'RedialButton
+        '
+        Me.RedialButton.BackgroundImage = Global.KidWatch.My.Resources.Resources.call_512
+        Me.RedialButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.RedialButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RedialButton.ForeColor = System.Drawing.Color.Green
+        Me.RedialButton.Location = New System.Drawing.Point(7, 102)
+        Me.RedialButton.Name = "RedialButton"
+        Me.RedialButton.Size = New System.Drawing.Size(70, 50)
+        Me.RedialButton.TabIndex = 6
+        Me.RedialButton.UseVisualStyleBackColor = True
+        '
+        'FailedCallPicture
+        '
+        Me.FailedCallPicture.BackgroundImage = Global.KidWatch.My.Resources.Resources.broken_link_512
+        Me.FailedCallPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.FailedCallPicture.Location = New System.Drawing.Point(2, 2)
+        Me.FailedCallPicture.Name = "FailedCallPicture"
+        Me.FailedCallPicture.Size = New System.Drawing.Size(43, 44)
+        Me.FailedCallPicture.TabIndex = 5
+        Me.FailedCallPicture.TabStop = False
+        '
+        'CallTimer
+        '
+        Me.CallTimer.Interval = 10000
         '
         'KidWatch
         '
@@ -1439,6 +1524,9 @@ Partial Class KidWatch
         Me.Main.ResumeLayout(False)
         CType(Me.WatchBgImg, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MainTabControl.ResumeLayout(False)
+        Me.FailedCall.ResumeLayout(False)
+        CType(Me.FailedCallerPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FailedCallPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1550,5 +1638,12 @@ Partial Class KidWatch
     Friend WithEvents MainTabControl As System.Windows.Forms.TabControl
     Friend WithEvents MessageTime2 As System.Windows.Forms.Label
     Friend WithEvents MessageTime1 As System.Windows.Forms.Label
+    Friend WithEvents DisruptiveToggleButton As System.Windows.Forms.Button
+    Friend WithEvents FailedCall As System.Windows.Forms.TabPage
+    Friend WithEvents CallTimer As System.Windows.Forms.Timer
+    Friend WithEvents FailedCallerPicture As System.Windows.Forms.PictureBox
+    Friend WithEvents VoiceMailButton As System.Windows.Forms.Button
+    Friend WithEvents RedialButton As System.Windows.Forms.Button
+    Friend WithEvents FailedCallPicture As System.Windows.Forms.PictureBox
 
 End Class

@@ -340,6 +340,9 @@
   <data name="arrow_11_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow-11-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="broken_link_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\broken-link-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cards_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cards-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -364,6 +367,12 @@
   <data name="microphone_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\microphone-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="microphone_512_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\microphone-512-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mute_2_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mute-2-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plus_6_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus-6-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -372,6 +381,9 @@
   </data>
   <data name="speaker_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\speaker-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="speaker_512_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\speaker-512-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="speaker_512_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\speaker-512-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
